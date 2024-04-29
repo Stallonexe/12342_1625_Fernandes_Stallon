@@ -33,6 +33,8 @@ def Register(Email_Entry, Name_Entry, Surname_Entry, Contact_Entry, Password_Ent
         Send(f"!Register {Email} {UserSalt} {HashedPassword} {Name} {Surname} {ContactNo}")
         Send(DISCONNECT_MESSAGE)
     else:
+        pass
+
 
 
 def Login(Email_Entry, Password_Entry):
