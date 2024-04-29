@@ -2,6 +2,8 @@ import tkinter as Tk
 import hashlib
 from tkinter import messagebox
 from tkinter import PhotoImage
+from Main_Program.Commands import *
+
 from tkinter import font
 #from Database import Login_database
 #from Algorithms.Login import Salt_Generator
@@ -75,7 +77,7 @@ def RegisterScreen(EntryFrame):
     RepeatPassword_Entry = Tk.Entry(RegisterFrame, show="*", font=("Arial", 16))
 
     Register_button = Tk.Button(RegisterFrame, text="Register", bg='#1aebff', fg="Black", font=("Arial", 16),
-                                command=lambda: print(Email_Entry, Name_Entry, Surname_Entry, Contact_Entry, Password_Entry, RepeatPassword_Entry ))
+                                command=lambda: Register(Email_Entry, Name_Entry, Surname_Entry, Contact_Entry, Password_Entry, RepeatPassword_Entry))
 
     #Adding Widget
     Back_Button.grid(row=0, column=0, columnspan=2, padx=5, pady=25, sticky="w")
