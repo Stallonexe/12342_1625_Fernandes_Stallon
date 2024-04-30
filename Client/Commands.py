@@ -43,3 +43,6 @@ def Login(Email_Entry, Password_Entry):
 
     #Get hash
     
+#Server sends True if registerd and false if not.
+
+# The client will be in while loop, waiting for the reply, while reply is true, it will move to next screen

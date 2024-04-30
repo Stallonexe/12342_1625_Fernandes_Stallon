@@ -3,7 +3,7 @@ from Email_System.Email_Sender import *
 #email
 
 
-def execute(message, cursor, connection):
+def dexecute(message, cursor, connection):
     command = message.split()
 
     if command[0] == "!Register":
@@ -48,6 +48,73 @@ def execute(message, cursor, connection):
         return "INVALID"
 
 
+def execute(message, cursor, connection):
+    command = message.split()
+
+    if command[0] == "Create":
+        if command[1] == "RegUser":
+            register(command[2], command[3], command[4], command[5], command[6], command[7], cursor, connection)
+
+        elif command[1] == "RegProperty":
+            pass
+        else:
+            return "INVALID"
+
+    elif command[0] == "Retrieve":
+        if command[1] == "Salt":
+            User_salt = get_salt(command[2], cursor, connection)
+
+            if len(User_salt) != 0:
+                return User_salt[0]
+            else:
+                return None
+
+        elif command[1] == "PropertyJSON":
+            pass
+        else:
+            return "INVALID"
+
+    elif command[0] == "Update":
+        if command[1] == "Salt":
+            pass
+        elif command[1] == "PropertyJSON":
+            pass
+        else:
+            return "INVALID"
+
+    elif command[0] == "Delete":
+        if command[1] == "Salt":
+            pass
+        elif command[1] == "PropertyJSON":
+            pass
+        else:
+            return "INVALID"
+
+    elif command[0] == "Verify":
+        if command[1] == "Salt":
+            pass
+        elif command[1] == "PropertyJSON":
+            pass
+        else:
+            return "INVALID"
+
+    elif command[0] == "Send":
+        if command[1] == "Salt":
+            pass
+        elif command[1] == "PropertyJSON":
+            pass
+        else:
+            return "INVALID"
+
+    elif command[0] == "Generate":
+        if command[1] == "Salt":
+            pass
+        elif command[1] == "PropertyJSON":
+            pass
+        else:
+            return "INVALID"
+    else:
+        return "INVALID"
 
 cursor.close()
 connection.close()
