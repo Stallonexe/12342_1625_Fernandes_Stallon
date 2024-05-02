@@ -1,7 +1,7 @@
 import sqlite3
 
 class User:
-    def __init__(self, UserEmail, UserSalt, Password, FirstName, Surname, ContactNo, cursor, connection):
+    def __init__(self, UserEmail, UserSalt, Password, FirstName, Surname, ContactNo):
 
         #Attributes
         self.Email = UserEmail
@@ -12,8 +12,8 @@ class User:
         self.ContactNo = ContactNo
 
         #Database
-        self.cursor = cursor
-        self.connection = connection
+        self.connection = sqlite3.connect('login.db')
+        self.cursor = self.connection.cursor()
 
         #Methods
         self.CreateUserTable()
@@ -38,9 +38,9 @@ class User:
         self.cursor.execute(query, values)
         self.connection.commit()
 
-    def GetSalt(self):
+    def GetSalt(self, Email):
         query = """SELECT UserSalt FROM UserTable WHERE UserEmail = ?"""
-        self.cursor.execute(query, (self.Email,))
+        self.cursor.execute(query, (Email,))
         User_salt = self.cursor.fetchone()
 
         if len(User_salt) != 0:

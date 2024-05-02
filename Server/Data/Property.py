@@ -1,27 +1,31 @@
+import sqlite3
+
 class Property:
-    def __init__(self, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating, cursor, connection):
+    def __init__(self, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating):
         # Attributes
-        self.price = price
+        self.price = int(price)
         self.address = address
         self.postcode = postcode
-        self.bedroom = bedroom
-        self.bathroom = bathroom
-        self.living_room = living_room
+        self.bedroom = int(bedroom)
+        self.bathroom = int(bathroom)
+        self.living_room = int(living_room)
         self.tenure = tenure
         self.tax_band = tax_band
         self.property_type = property_type
         self.EPC_rating = EPC_rating
 
         # Database
-        self.cursor = cursor
-        self.connection = connection
+        self.connection = sqlite3.connect('Property.db')
+        self.cursor = self.connection.cursor()
 
         #Methods
         self.CreatePropertyTable()
+        self.AddProperty()
 
     def CreatePropertyTable(self):
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS PropertyTable
                               (
+                              PropertyID CHAR(6) PRIMARY KEY NOT NULL,
                               address VARCHAR(320) PRIMARY KEY NOT NULL,
                               postcode CHAR(6) PRIMARY KEY NOT NULL,
                               price INTEGER NOT NULL,
@@ -35,89 +39,106 @@ class Property:
                               
                               )''')
 
+    def AddProperty(self):
+        query = """INSERT INTO PropertyTable (price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+        values = (self.price, self.address, self.postcode, self.bedroom, self.bathroom, self.living_room, self.tenure, self.tax_band, self.property_type, self.EPC_rating)
+
+        self.cursor.execute(query, values)
+        self.connection.commit()
+
     # Get Functions
-    def get_price(self):
-        return self.price
+    def get_price(self, PropertyID):
+        query = """SELECT price FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (PropertyID,))
+        price = self.cursor.fetchone()
 
-    def get_address(self):
-        return self.address
+        return price
 
-    def get_postcode(self):
-        return self.postcode
+    def get_address(self, PropertyID):
+        query = """SELECT address FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (PropertyID,))
+        address = self.cursor.fetchone()
 
-    def get_bedroom(self):
-        return self.bedroom
+        return address
 
-    def get_bathroom(self):
-        return self.bathroom
+    def get_postcode(self, PropertyID):
+        query = """SELECT postcode FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (PropertyID,))
+        postcode = self.cursor.fetchone()
 
-    def get_living_room(self):
-        return self.living_room
+        return postcode
 
-    def get_tenure(self):
-        return self.tenure
+    def get_bedroom(self, PropertyID):
+        query = """SELECT bedroom FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (PropertyID,))
+        bedroom = self.cursor.fetchone()
 
-    def get_tax_band(self):
-        return self.tax_band
+        return bedroom
 
-    def get_property_type(self):
-        return self.property_type
+    def get_bathroom(self, PropertyID):
+        query = """SELECT bathroom FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (PropertyID,))
+        bathroom = self.cursor.fetchone()
 
-    def get_EPC_rating(self):
-        return self.EPC_rating
+        return bathroom
+
+    def get_living_room(self, PropertyID):
+        query = """SELECT living_room FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (PropertyID,))
+        living_room = self.cursor.fetchone()
+
+        return living_room
+
+    def get_tenure(self, PropertyID):
+        query = """SELECT tenure FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (PropertyID,))
+        tenure = self.cursor.fetchone()
+
+        return tenure
+
+    def get_tax_band(self, PropertyID):
+        query = """SELECT tax_band FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (PropertyID,))
+        tax_band = self.cursor.fetchone()
+
+        return tax_band
+
+    def get_property_type(self, PropertyID):
+        query = """SELECT property_type FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (PropertyID,))
+        property_type = self.cursor.fetchone()
+
+        return property_type
+
+    def get_EPC_rating(self, PropertyID):
+        query = """SELECT EPC_rating FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (PropertyID,))
+        EPC_rating = self.cursor.fetchone()
+
+        return EPC_rating
+
+    def GetProperty(self, PropertyID):
+        price = self.get_price(PropertyID)
+        address = self.get_address(PropertyID)
+        postcode = self.get_postcode(PropertyID)
+        bedroom = self.get_bedroom(PropertyID)
+        bathroom = self.get_bathroom(PropertyID)
+        living_room = self.get_living_room(PropertyID)
+        tenure = self.get_tenure(PropertyID)
+        tax_band = self.get_tax_band(PropertyID)
+        property_type = self.get_property_type(PropertyID)
+        EPC_rating = self.get_EPC_rating(PropertyID)
+
+
+        return f"{price} {address} {postcode} {bedroom} {bathroom} {living_room} {tenure} {tax_band} {property_type} {EPC_rating}"
 
   #set functions (Sets the value of attributes for a given object)
 
-    def set_price(self,price):
-        self.price = price
+    def set_price(self, new_price, PropertyID):
+        query = """UPDATE PropertyTable SET price = ? WHERE property_id = ?"""
+        values = (new_price, PropertyID)
 
-    def set_address(self,address):
-        self.address = address
+        self.cursor.execute(query, values)
+        self.connection.commit()
 
-    def set_postcode(self,postcode):
-        self.postcode = postcode
-
-    def set_bedroom(self,bedroom):
-        self.bedroom = bedroom
-
-    def set_bathroom(self,bathroom):
-        self.bathroom = bathroom
-
-    def set_living_room(self, living_room):
-        self.living_room = living_room
-
-    def set_tenure(self, tenure):
-        self.tenure = tenure
-
-    def set_tax_band(self, tax_band):
-        self.tax_band = tax_band
-
-    def set_property_type(self, property_type):
-        self.property_type = property_type
-
-    def set_EPC_rating(self,EPC_rating):
-        return self.EPC_rating
-
-
-Property1 = Property(450000, "1 Potters Road", "UB24AS", 2, 2, 1, "freehold", "C", "terraced", "B")
-
-
-print(Property1.get_price())
-print(Property1.get_address())
-print(Property1.get_postcode())
-print(Property1.get_bedroom())
-print(Property1.get_bathroom())
-print(Property1.get_living_room())
-print(Property1.get_tenure())
-print(Property1.get_property_type())
-print(Property1.get_EPC_rating())
-
-
-#def generate_card():
-  #
-
-#def display_card():
-  #
-
-#def display_information():
-  #
+House = property()

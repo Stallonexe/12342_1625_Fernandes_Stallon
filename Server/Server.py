@@ -27,7 +27,7 @@ def log(console_command):
         log.close()
         print(console_command)
 
-def handle_client(conn, addr):
+def ServerClient(conn, addr):
     display_text = f"\n[NEW CONNECTION {CurrentTime()}] {addr} connected."
     log(display_text)
 
@@ -76,7 +76,7 @@ def start():
 
     while True:
         conn, addr = server.accept()
-        thread = threading.Thread(target=handle_client, args=(conn, addr))
+        thread = threading.Thread(target=ServerClient, args=(conn, addr))
         thread.start()
         print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")
 
