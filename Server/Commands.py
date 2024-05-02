@@ -73,5 +73,8 @@ def execute(message, cursor, connection):
     else:
         return "INVALID"
 
+
+execute("Create RegUser UserEmail ABCDEF Password FirstName Surname 07440423797", "", "")
+execute("Create RegProperty 450000 77CoplandRoad HA04YF 1 1 1 Freehold C Flat C","","")
 cursor.close()
 connection.close()

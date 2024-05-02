@@ -1,8 +1,9 @@
 import sqlite3
 
 class Property:
-    def __init__(self, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating):
+    def __init__(self, PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating):
         # Attributes
+        self.PropertyID = PropertyID
         self.price = int(price)
         self.address = address
         self.postcode = postcode
@@ -26,8 +27,8 @@ class Property:
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS PropertyTable
                               (
                               PropertyID CHAR(6) PRIMARY KEY NOT NULL,
-                              address VARCHAR(320) PRIMARY KEY NOT NULL,
-                              postcode CHAR(6) PRIMARY KEY NOT NULL,
+                              address VARCHAR(320) NOT NULL,
+                              postcode CHAR(6)  KEY NOT NULL,
                               price INTEGER NOT NULL,
                               bedroom INTEGER) NOT NULL,
                               bathroom INTEGER NOT NULL,
@@ -40,8 +41,8 @@ class Property:
                               )''')
 
     def AddProperty(self):
-        query = """INSERT INTO PropertyTable (price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
-        values = (self.price, self.address, self.postcode, self.bedroom, self.bathroom, self.living_room, self.tenure, self.tax_band, self.property_type, self.EPC_rating)
+        query = """INSERT INTO PropertyTable (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+        values = (self.PropertyID, self.price, self.address, self.postcode, self.bedroom, self.bathroom, self.living_room, self.tenure, self.tax_band, self.property_type, self.EPC_rating)
 
         self.cursor.execute(query, values)
         self.connection.commit()
