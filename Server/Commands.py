@@ -13,7 +13,7 @@ def execute(message, cursor, connection):
             User(command[2], command[3], command[4], command[5], command[6], command[7])
 
         elif command[1] == "RegProperty":
-            Property(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10], command[11])
+            Property(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10], command[11], command[12])
         else:
             return "INVALID"
 
@@ -74,7 +74,7 @@ def execute(message, cursor, connection):
         return "INVALID"
 
 
-execute("Create RegUser UserEmail ABCDEF Password FirstName Surname 07440423797", "", "")
-execute("Create RegProperty 450000 77CoplandRoad HA04YF 1 1 1 Freehold C Flat C","","")
+execute("Create RegUser dorisanta@il. ABCDEF Password FirstName Surname 07440423797", "", "")
+execute("Create RegProperty ASDFGH 450000 77CoplandRoad HA04YF 1 1 1 Freehold C Flat C","","")
 cursor.close()
 connection.close()

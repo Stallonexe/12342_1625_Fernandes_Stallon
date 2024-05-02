@@ -28,20 +28,19 @@ class Property:
                               (
                               PropertyID CHAR(6) PRIMARY KEY NOT NULL,
                               address VARCHAR(320) NOT NULL,
-                              postcode CHAR(6)  KEY NOT NULL,
+                              postcode CHAR(6) UNIQUE NOT NULL,
                               price INTEGER NOT NULL,
-                              bedroom INTEGER) NOT NULL,
+                              bedroom INTEGER NOT NULL,
                               bathroom INTEGER NOT NULL,
                               living_room INTEGER NOT NULL,
                               tenure VARCHAR(18) NOT NULL,
-                              tax_band CHAR(a) NOT NULL,
+                              tax_band CHAR(1) NOT NULL,
                               property_type VARCHAR(64) NOT NULL,
                               EPC_rating CHAR(1)
-                              
                               )''')
 
     def AddProperty(self):
-        query = """INSERT INTO PropertyTable (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+        query = """INSERT INTO PropertyTable (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
         values = (self.PropertyID, self.price, self.address, self.postcode, self.bedroom, self.bathroom, self.living_room, self.tenure, self.tax_band, self.property_type, self.EPC_rating)
 
         self.cursor.execute(query, values)

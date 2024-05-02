@@ -9,14 +9,14 @@ class User:
         self.Password = Password
         self.Name = FirstName
         self.Surname = Surname
-        self.ContactNo = ContactNo
+        self.ContactNo = int(ContactNo)
 
         #Database
         self.connection = sqlite3.connect('login.db')
         self.cursor = self.connection.cursor()
 
         #Methods
-        self.CreateUserTable()
+        #self.CreateUserTable()
         self.RegisterUser()
 
     def CreateUserTable(self):
