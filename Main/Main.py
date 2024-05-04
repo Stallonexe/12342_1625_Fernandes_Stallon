@@ -2,6 +2,8 @@ import random
 import json
 import time
 
+from Algorithms.mergesort import MergeSort
+
 PropertyList = []
 
 #Get Property Details
@@ -25,6 +27,9 @@ class Display:
         self.Sample = Sample
         self.PropertyList = PropertyList
         self.LikedProperties = []
+
+        self.SeenList = []
+        self.SeenDict = {}
 
     def DisplayProperty(self, PropertyID):
 
@@ -56,15 +61,12 @@ class Display:
             RequestBooking = input("Do you want to book a viewing? [y/n]").lower()
 
             if RequestBooking == "y":
+                print("ello")
                 # Booking procedure
 
         TimeDuration = End_time - Start_time
-
-
-
-
-
-
+        self.SeenList.append(str(PropertyID))
+        self.SeenDict[str(PropertyID)] = int(TimeDuration)
 
 
     def ReadJsonFile(self):
@@ -72,7 +74,11 @@ class Display:
         with open("Properties.json", "r") as json_file:
             self.Property = json.load(json_file)
 
+    def RankList(self):
+        self.TimeList = list(self.SeenDict.values())
+        self.TimeList = MergeSort(self.TimeList)
 
 
+        # Use merge sort or other
 
 
