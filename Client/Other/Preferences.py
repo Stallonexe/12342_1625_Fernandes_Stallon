@@ -50,15 +50,6 @@ class UserPreference:
     except:
       self.property_type = -1
 
-  def SavePreferences(self):
-      with open("Preferences.txt","w") as file:
-        pass
-
-          
-
-
-
-    print(self.living_rooms)
 
 
 
