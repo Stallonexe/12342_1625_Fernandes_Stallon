@@ -155,7 +155,6 @@ class Display:
 
     def RankList(self):
         self.SeenList = sorted(self.SeenList, key=lambda ID: self.SeenDict[ID], reverse=True)
-        # Use merge sort or other
 
 #main
 

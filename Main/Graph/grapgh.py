@@ -65,7 +65,7 @@ def FindLink():
             if House1 != House2:
                 print(graph)
                 if Property[House1]["PostCode"][:2] == Property[House2]["PostCode"][:2]:
-                    if House2 in graph[House1] and House1 in graph[House2]:
+                    if House2 in graph[House1]:
                         graph[House1][House2] += 1
                         graph[House2][House1] += 1
                     else:
