@@ -1,6 +1,4 @@
-import math
-
-class Users:
+class UserPreference:
   def __init__(self, User_email, **preference):
     self.email = User_email
 
@@ -54,6 +52,8 @@ class Users:
 
   def SavePreferences(self):
       with open("Preferences.txt","w") as file:
+        pass
+
           
 
 
@@ -62,17 +62,7 @@ class Users:
 
 
 
-denzil = Users("denzil@gmail.com", living_rooms = 5)
+denzil = UserPreference("denzil@gmail.com", living_rooms = 5)
 
 
-
-def Sigmoid(x):
-  u = 1 # numerator
-  v = 1 + ((math.e) ** -x)
-  return u / v
-
-def calc_weight(User, Property):
-
-
-print(Sigmoid(10))
 

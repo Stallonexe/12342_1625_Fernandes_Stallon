@@ -132,6 +132,28 @@ class Property:
 
         return f"{price} {address} {postcode} {bedroom} {bathroom} {living_room} {tenure} {tax_band} {property_type} {EPC_rating}"
 
+    def GetPreferredPropertyID(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,
+                               property_type):
+        query = """SELECT PropertyID FROM PropertyTable 
+             WHERE Price BETWEEN? AND? 
+             AND Postcode =? 
+             AND Bedrooms <=? 
+             AND Bathrooms <=? 
+             AND LivingRooms <=? 
+             AND Tenure =? 
+             AND PropertyType =?"""
+
+        values = (min_price, max_price, postcode, bedroom, bathroom, living_room, tenure, property_type)
+
+        self.cursor.execute(query, values)
+
+        PropertyIDs = []
+        for row in self.cursor.fetchall():
+            PropertyIDs.append(row)
+
+        return PropertyIDs
+
+
   #set functions (Sets the value of attributes for a given object)
 
     def set_price(self, new_price, PropertyID):
