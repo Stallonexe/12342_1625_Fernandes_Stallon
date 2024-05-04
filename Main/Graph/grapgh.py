@@ -63,33 +63,62 @@ def FindLink():
         for House2 in Property:
 
             if House1 != House2:
+                print(graph)
                 if Property[House1]["PostCode"][:2] == Property[House2]["PostCode"][:2]:
-                    graph[House1][House2] = "*"
-                    graph[House2][House1] = "*" # PlaceHolder * indicates a link and represents an outbound connection
+                    if House2 in graph[House1] and House1 in graph[House2]:
+                        graph[House1][House2] += 1
+                        graph[House2][House1] += 1
+                    else:
+                        graph[House1][House2] = 1
+                        graph[House2][House1] = 1
 
                 if Property[House1]["Bedroom"] == Property[House2]["Bedroom"]:
-                    graph[House1][House2] = "*"
-                    graph[House2][House1] = "*"
+                    if House2 in graph[House1] and House1 in graph[House2]:
+                        graph[House1][House2] += 1
+                        graph[House2][House1] += 1
+                    else:
+                        graph[House1][House2] = 1
+                        graph[House2][House1] = 1
 
                 if Property[House1]["Bathroom"] == Property[House2]["Bathroom"]:
-                    graph[House1][House2] = "*"
-                    graph[House2][House1] = "*"
+                    if House2 in graph[House1] and House1 in graph[House2]:
+                        graph[House1][House2] += 1
+                        graph[House2][House1] += 1
+                    else:
+                        graph[House1][House2] = 1
+                        graph[House2][House1] = 1
 
                 if Property[House1]["living_rooms"] == Property[House2]["living_rooms"]:
-                    graph[House1][House2] = "*"
-                    graph[House2][House1] = "*"
+                    if House2 in graph[House1] and House1 in graph[House2]:
+                        graph[House1][House2] += 1
+                        graph[House2][House1] += 1
+                    else:
+                        graph[House1][House2] = 1
+                        graph[House2][House1] = 1
 
                 if Property[House1]["tax_band"] == Property[House2]["tax_band"]:
-                    graph[House1][House2] = "*"
-                    graph[House2][House1] = "*"
+                    if House2 in graph[House1] and House1 in graph[House2]:
+                        graph[House1][House2] += 1
+                        graph[House2][House1] += 1
+                    else:
+                        graph[House1][House2] = 1
+                        graph[House2][House1] = 1
 
                 if Property[House1]["tax_band"] == Property[House2]["tax_band"]:
-                    graph[House1][House2] = "*"
-                    graph[House2][House1] = "*"
+                    if House2 in graph[House1] and House1 in graph[House2]:
+                        graph[House1][House2] += 1
+                        graph[House2][House1] += 1
+                    else:
+                        graph[House1][House2] = 1
+                        graph[House2][House1] = 1
 
                 if Property[House1]["property_type"] == Property[House2]["property_type"]:
-                    graph[House1][House2] = "*"
-                    graph[House2][House1] = "*"
+                    if House2 in graph[House1] and House1 in graph[House2]:
+                        graph[House1][House2] += 1
+                        graph[House2][House1] += 1
+                    else:
+                        graph[House1][House2] = 1
+                        graph[House2][House1] = 1
 
 FindLink()
 print(graph)
