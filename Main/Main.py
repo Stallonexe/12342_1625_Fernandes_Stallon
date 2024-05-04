@@ -2,7 +2,9 @@ import random
 import json
 import time
 
-from Algorithms.mergesort import MergeSort
+#from Algorithms.mergesort import MergeSort
+from Data_Structures.Graph import Graph
+from Data_Structures.Matirx import Matrix
 
 PropertyList = ["H1","H2","H3","H4","H5","H6"]
 
@@ -10,6 +12,82 @@ PropertyList = ["H1","H2","H3","H4","H5","H6"]
 
 
 SAMPLE_SIZE = 3
+
+Property = {
+    "H1": {
+        "address": "123 Main St",
+        "PostCode": "AB12 3CD",
+        "Price": 250000,
+        "Bedroom": 3,
+        "Bathroom": 2,
+        "living_rooms": 1,
+        "tenure": "Freehold",
+        "tax_band": "C",
+        "property_type": "House",
+        "EPC_rating": "B"
+    },
+    "H2": {
+        "address": "456 Elm St",
+        "PostCode": "EF34 5GH",
+        "Price": 300000,
+        "Bedroom": 4,
+        "Bathroom": 3,
+        "living_rooms": 2,
+        "tenure": "Leasehold",
+        "tax_band": "D",
+        "property_type": "Apartment",
+        "EPC_rating": "C"
+    },
+    "H3": {
+        "address": "789 Oak St",
+        "PostCode": "IJ56 7KL",
+        "Price": 200000,
+        "Bedroom": 2,
+        "Bathroom": 1,
+        "living_rooms": 1,
+        "tenure": "Freehold",
+        "tax_band": "B",
+        "property_type": "Flat",
+        "EPC_rating": "A"
+    },
+    "H4": {
+        "address": "10 Maple St",
+        "PostCode": "MN78 9OP",
+        "Price": 350000,
+        "Bedroom": 5,
+        "Bathroom": 3,
+        "living_rooms": 2,
+        "tenure": "Freehold",
+        "tax_band": "E",
+        "property_type": "House",
+        "EPC_rating": "D"
+    },
+    "H5": {
+        "address": "11 Pine St",
+        "PostCode": "QR90 1ST",
+        "Price": 280000,
+        "Bedroom": 3,
+        "Bathroom": 2,
+        "living_rooms": 1,
+        "tenure": "Leasehold",
+        "tax_band": "C",
+        "property_type": "Flat",
+        "EPC_rating": "B"
+    },
+    "H6": {
+        "address": "12 Cedar St",
+        "PostCode": "UV23 4WX",
+        "Price": 400000,
+        "Bedroom": 4,
+        "Bathroom": 3,
+        "living_rooms": 2,
+        "tenure": "Freehold",
+        "tax_band": "F",
+        "property_type": "House",
+        "EPC_rating": "C"
+    }
+}
+
 
 def SimpleRandomSample():
     Sample = []
@@ -23,14 +101,15 @@ def SimpleRandomSample():
     return Sample
 
 class Display:
-    def __init__(self, Sample, PropertyList):
+    def __init__(self, Sample, PropertyList, Property):
         self.Sample = Sample
         self.PropertyList = PropertyList
         self.LikedProperties = []
 
         self.SeenList = []
         self.SeenDict = {}
-        self.Test() # remove later
+
+        self.Property = Property
 
     def DisplayProperty(self, PropertyID):
 
@@ -77,81 +156,6 @@ class Display:
         with open("Properties.json", "r") as json_file:
             self.Property = json.load(json_file)
 
-    def Test(self):
-        self.Property = {
-            "H1": {
-                "address": "123 Main St",
-                "PostCode": "AB12 3CD",
-                "Price": 250000,
-                "Bedroom": 3,
-                "Bathroom": 2,
-                "living_rooms": 1,
-                "tenure": "Freehold",
-                "tax_band": "C",
-                "property_type": "House",
-                "EPC_rating": "B"
-            },
-            "H2": {
-                "address": "456 Elm St",
-                "PostCode": "EF34 5GH",
-                "Price": 300000,
-                "Bedroom": 4,
-                "Bathroom": 3,
-                "living_rooms": 2,
-                "tenure": "Leasehold",
-                "tax_band": "D",
-                "property_type": "Apartment",
-                "EPC_rating": "C"
-            },
-            "H3": {
-                "address": "789 Oak St",
-                "PostCode": "IJ56 7KL",
-                "Price": 200000,
-                "Bedroom": 2,
-                "Bathroom": 1,
-                "living_rooms": 1,
-                "tenure": "Freehold",
-                "tax_band": "B",
-                "property_type": "Flat",
-                "EPC_rating": "A"
-            },
-            "H4": {
-                "address": "10 Maple St",
-                "PostCode": "MN78 9OP",
-                "Price": 350000,
-                "Bedroom": 5,
-                "Bathroom": 3,
-                "living_rooms": 2,
-                "tenure": "Freehold",
-                "tax_band": "E",
-                "property_type": "House",
-                "EPC_rating": "D"
-            },
-            "H5": {
-                "address": "11 Pine St",
-                "PostCode": "QR90 1ST",
-                "Price": 280000,
-                "Bedroom": 3,
-                "Bathroom": 2,
-                "living_rooms": 1,
-                "tenure": "Leasehold",
-                "tax_band": "C",
-                "property_type": "Flat",
-                "EPC_rating": "B"
-            },
-            "H6": {
-                "address": "12 Cedar St",
-                "PostCode": "UV23 4WX",
-                "Price": 400000,
-                "Bedroom": 4,
-                "Bathroom": 3,
-                "living_rooms": 2,
-                "tenure": "Freehold",
-                "tax_band": "F",
-                "property_type": "House",
-                "EPC_rating": "C"
-            }
-        }
 
     def RankList(self):
         self.SeenList = sorted(self.SeenList, key=lambda ID: self.SeenDict[ID], reverse=True)
@@ -160,7 +164,7 @@ class Display:
 
 Sample = SimpleRandomSample()
 
-Program = Display(Sample, PropertyList)
+Program = Display(Sample, PropertyList, Property)
 
 for i in range(0,3):
     ID = Sample[i]
@@ -168,3 +172,13 @@ for i in range(0,3):
 
 print(Program.SeenList)
 print(Program.SeenDict)
+
+graph = Graph(Property)
+matrix = Matrix()
+matrix.AppendMatrix(graph.getmatrix())
+
+Rank = matrix.GetRank()
+
+for ID in Rank:
+    if ID not in Program.SeenList:
+        Program.DisplayProperty(ID)

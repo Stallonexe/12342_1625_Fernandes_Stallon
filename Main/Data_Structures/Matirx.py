@@ -6,9 +6,10 @@ class Matrix:
 
     def MatrixProcedure(self):
         self.InitialRank()
-        for i in range(5):
+        for i in range(3):
             self.MultiplyMatrix()
-        print("Rank", self.Rank)
+            #print(f"{i} Rank", self.GetRank())
+        #print("Rank", self.Rank)
 
 
 
@@ -26,7 +27,7 @@ class Matrix:
         for i in range(len(self.Row)):
             rank = 1 / len(self.Row)
             self.Rank.append(rank)
-        print("Initial Rank",self.Rank)
+        #print("Initial Rank",self.Rank)
 
     def MultiplyMatrix(self):
         Rank = []
@@ -39,10 +40,14 @@ class Matrix:
 
                 Row_Sum.append(rank)
 
-            Rank.append(sum(Row_Sum))
+            total = 0
+            for i in range(0,len(Row_Sum)-1):
+                total += Row_Sum[i]
+
+            Rank.append(total)
 
         self.Rank = Rank
-        print(self.Rank)
+        #print(self.Rank)
 
     def ConvertToDictionary(self):
         Dictionary = {}
@@ -57,15 +62,6 @@ class Matrix:
         return Rank
 
 
-Matrix = Matrix()
+#Matrix = Matrix()
 
-Matrix.AppendMatrix({'H1': [0.0, 0.25, 0.25, 0.5],
-    'H2': [0.5, 0.0, 0.0, 0.5],
-    'H3': [0.5, 0.0, 0.0, 0.5],
-    'H4': [0.5, 0.25, 0.25, 0.0]})
-print(f"{Matrix.Row}, \n{Matrix.Matrix} dslf")
-
-print(Matrix.GetRank())
-
-
-
+#Matrix.AppendMatrix({'H1': [0.0, 0.25, 0.25, 0.5],'H2': [0.5, 0.0, 0.0, 0.5],'H3': [0.5, 0.0, 0.0, 0.5],'H4': [0.5, 0.25, 0.25, 0.0]})
