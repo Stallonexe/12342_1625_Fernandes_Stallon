@@ -246,7 +246,8 @@ class Screen:
 
         TimeDuration = End_time - Start_time
         if PropertyID in self.LikedProperties:
-            TimeDuration += 1
+            TimeDuration += 10 # acts as a bias
+
         self.SeenList.append(str(PropertyID))
         self.SeenDict[str(PropertyID)] = int(TimeDuration)
 
