@@ -1,28 +1,11 @@
-import random
 import time
-import hashlib
+from Functions import *
+from Booking import *
 
 
-def HashPassword(UserEmail, Password):
-    #Get Salt
-    UserSalt = "ABCDE"
-    Password += UserSalt
-    PasswordBytes = Password.encode('utf-8')
-
-    SHA256 = hashlib.sha256()
-    SHA256.update(PasswordBytes)
-    HashedPassword = SHA256.hexdigest()
-
-    return HashedPassword
-
-def GetPropertyList():
-    PropertyList = []
-    for house in Property:
-        PropertyList.append(house)
-    return PropertyList
 
 class Screen:
-    def __init__(self,  PropertyList, Property):
+    def __init__(self):
         self.logo = """
 ██╗░░██╗  ░█████╗░  ██╗░░░██╗  ░██████╗  ██╗  ███████╗  ██╗░░░██╗
 ██║░░██║  ██╔══██╗  ██║░░░██║  ██╔════╝  ██║  ██╔════╝  ╚██╗░██╔╝
@@ -31,7 +14,11 @@ class Screen:
 ██║░░██║  ╚█████╔╝  ╚██████╔╝  ██████╔╝  ██║  ██║░░░░░  ░░░██║░░░ Program
 ╚═╝░░╚═╝  ░╚════╝░  ░╚═════╝░  ╚═════╝░  ╚═╝  ╚═╝░░░░░  ░░░╚═╝░░░ Made By Stallon"""
 
+        #Constants
+        self.INF = 1000000
+
         self.Preference = {}
+        self.Salt = gen_salt()
 
         #main
         self.PropertyList = PropertyList
@@ -40,7 +27,6 @@ class Screen:
         self.SeenList = []
         self.SeenDict = {}
 
-        self.Property = Property
 
 
     def StartScreen(self):
@@ -108,7 +94,7 @@ class Screen:
 
                     Password = input("Password    :     ")
 
-                    MatchedPassword = HashPassword(UserEmail, Password)
+                    MatchedPassword = HashPassword(self.Salt, Password)
 
                     if MatchedPassword == True:
                         print("\nLogin Successful !")
@@ -116,7 +102,7 @@ class Screen:
                         break
 
                     else:
-                        print(f"\nIncorrect Password!\nYou have {ATTEMPTS - 3} attempts Left!")
+                        print(f"\nIncorrect Password!\nYou have {3 - ATTEMPTS} attempts Left!")
                         print("\n##########################################################################################\n")
                 print("Please Try Again Later !")
                 time.sleep(3)
@@ -143,15 +129,23 @@ class Screen:
 
         Surname = str(input("Surname         :     "))
 
-        ContactNo = int(input("Phone Number    :     "))
+        try:
+            ContactNo = int(input("Phone Number    :     "))
+        except:
+            print("[*] Please input a valid phone number !!!\n")
+            try:
+                ContactNo = int(input("Phone Number    :     "))
+            except:
+                ContactNo = 0
 
         print()
         UserEmail, Password, RepeatPassword = LoginInput()
 
-        while Password != RepeatPassword and len(Password) > 6:
+        while Password != RepeatPassword and len(Password) < 6:
             print("\n   *** Both Passwords Don't Match or is less than 6 characters ***\n")
             UserEmail, Password, RepeatPassword = LoginInput()
 
+        HashedPassword = HashPassword(self.Salt, Password)
         #REGISTER WITH SERVER
         print("\nRegistration Successful !\nPlease Login\n")
         self.LoginScreen(EnableOTP=True)
@@ -164,15 +158,55 @@ class Screen:
         print("#                                    USER PREFERENCES                                    #")
         print("\n##########################################################################################\n")
         location = str(input("Location       :     ")).lower()
+        postcode = PostCode(location)
+        print(postcode)
+        print("\n[Detached][Semidetached][Terraced][Apartment][Flat][Bungalow]")
         propertytype = str(input("Property Type  :     ")).lower()
 
-        max_price = int(input("Max House Price:     "))
-        min_price = int(input("Min House Price:     "))
+        try:
+            max_price = int(input("Max House Price:     "))
+            min_price = int(input("Min House Price:     "))
 
-        BedroomNo = int(input("Bedrooms       :     "))
-        BathroomNo = int(input("Bathrooms      :     "))
-        LivingroomNo = int(input("Living rooms   :     "))
+            BedroomNo = int(input("Bedrooms       :     "))
+            BathroomNo = int(input("Bathrooms      :     "))
+            LivingroomNo = int(input("Living rooms   :     "))
+        except:
+            max_price = self.INF
+            min_price = self.INF
+            BedroomNo = self.INF
+            BathroomNo = self.INF
+            LivingroomNo = self.INF
+
         print("\n##########################################################################################\n")
+        # GetProperty from server # get graph
+
+        self.Property = readJson('Property.json')
+        self.PropertyList = GetPropertyList(self.Property)
+
+        print("Based on your preferences, here are some properties that you may like.")
+        self.SearchProperties()
+        print("\n##########################################################################################\n")
+        #Get Property###############
+
+    def SearchProperties(self):
+        SAMPLE_SIZE = 3
+        Sample = SimpleRandomSample(self.PropertyList, SAMPLE_SIZE)
+
+        for i in range(0,3):
+            ID = Sample[i]
+            self.DisplayProperty(ID)
+
+        root = self.SeenList[0]
+
+        graph = Graph(self.Property)
+        matrix = Matrix()
+        matrix.AppendMatrix(graph.getmatrix())
+
+        Rank = matrix.GetRank()
+        for ID in Rank:
+            if ID not in self.SeenList:
+                self.DisplayProperty(ID)
+
 
     def DisplayProperty(self, PropertyID):
         Text = f"""Property ID {PropertyID}.
@@ -196,6 +230,7 @@ class Screen:
         print("\n##########################################################################################\n")
 
         UserOpinion = input("Do you like the property?  [y/n] ").lower()
+        self.LikedProperties.append(PropertyID)
         End_time = time.time()
 
         if UserOpinion == "y":
@@ -210,6 +245,8 @@ class Screen:
                 # Booking procedure
 
         TimeDuration = End_time - Start_time
+        if PropertyID in self.LikedProperties:
+            TimeDuration += 1
         self.SeenList.append(str(PropertyID))
         self.SeenDict[str(PropertyID)] = int(TimeDuration)
 
