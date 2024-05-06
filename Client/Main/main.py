@@ -21,7 +21,6 @@ class Screen:
         self.Salt = gen_salt()
 
         #main
-        self.PropertyList = PropertyList
         self.LikedProperties = []
 
         self.SeenList = []
