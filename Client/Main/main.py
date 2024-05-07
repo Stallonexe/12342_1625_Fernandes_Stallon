@@ -281,7 +281,7 @@ class Screen:
             RequestBooking = input("Do you want to book a viewing? [y/n]").lower()
 
             if RequestBooking == "y":
-                booking = Booking(PropertyID)
+                booking = Booking(PropertyID,self.UserID)
                 booking.BookAppointments()
 
 
