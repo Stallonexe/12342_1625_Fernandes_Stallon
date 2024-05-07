@@ -1,54 +1,38 @@
 class Booking:
-    def __init__(self, PropertyID):
+    def __init__(self, PropertyID, UserID):
         self.PropertyID = PropertyID
-
-        self.week = {'Monday':[5,10,11,12,13,14,15],
-                     'Tuesday':[11,12,13,15],
-                     'Wednesday':[16,17,18,19],
-                     'Thursday':[4],
-                     'Friday':[18],
-                     'Saturday':[15],
-                     'Sunday':[14,16,18]}
-
-        self.GetAppointments()
-
-    def GetAppointments(self):
-        print()
-        #Query database, remove timing from week that r not available
-
-    def FindAvailability(self, UserID):
         self.UserID = UserID
 
+        self.week = {'monday':[],
+                     'tuesday':[],
+                     'wednesday':[],
+                     'thursday':[],
+                     'friday':[],
+                     'saturday':[],
+                     'sunday':[]}
+        self.START_TIME = 9
+        self.MAX_APPOINTMENTS_PER_DAY = 10
 
-        for day in self.week:
-            AvailableAppointments = len(self.week[day])
+        self.BookAppointments()
 
-            if AvailableAppointments != 0:
-                print(f"########## Booking Available ###########")
-                print(f"{day}:  \n")
+    def GetAppointments(self):
+        print("\n############################################################\n")
+        for Day in self.week:
+            print(f"{Day}   : {self.MAX_APPOINTMENTS_PER_DAY - len(self.week[Day])} appointments left")
+        print("\n############################################################\n")
 
-                for time in self.week[day]:
-                    print(f"{time} : 00\n")
-                print(f"########################################\n")
+        #Query database, remove timing from week that r not available
 
-                Time = int(input("What time do you want to view the Property? [type 0 to show more]"))
+    def BookAppointments(self):
+        self.GetAppointments()
 
-                if Time != 0:
-                    self.BookAppointment(day, Time)
+        Day = input("Which day do you prefer ?  ").lower()
+        Time = self.START_TIME + len(self.week[Day])
+        print(f"Next Appointment on {Day} is at {Time} : 00")
 
-            else:
-                print("No Appointments Available !")
-                return True
+        BookingChoice = input("\n\Type anything to cancel\nDo you want to book? [y/n]").lower()
 
-    def BookAppointment(self, Day, Time):
-        return f"Book {self.UserID} {self.PropertyID} {Day} {Time}"
-        #SQL book
-
-
-
-
-
-
-
-
-
+        if BookingChoice == 'y':
+            self.week[Day].append(self.UserID)
+        elif BookingChoice == 'n':
+            self.BookAppointments()

@@ -1,6 +1,7 @@
 import time
 from Functions import *
 from Booking import *
+from Email_Sender import email
 
 
 
@@ -53,23 +54,39 @@ class Screen:
 
         if EnableOTP == True:
             UserEmail = input("Enter Email :     ")
+            Name = input("Enter Name  :     ")
+            self.UserID = "U1"
             VerifyEmail = True # server
+
 
             if VerifyEmail == True:
                 ATTEMPTS = 0
+
+                try:
+                    SentOTP = email.SendOTP(UserEmail, Name)
+                    #print(SentOTP)
+                except:
+                    print("Invalid details inputted ! \nPlease Try Again !")
+                    self.LoginScreen(EnableOTP=True)
                 while ATTEMPTS != 3:
 
                     ATTEMPTS += 1
                     #send otp
-                    SentOTP = "ABCDEF"
 
-                    print(f"\nAn OTP-Code has been sent to {UserEmail}\n")
-                    InputOTP = input("OTP         :     ")
 
-                    if InputOTP == SentOTP:
+                    print(f"\nAn OTP-Code has been sent to {UserEmail}\n Type 0 to try again\n")
+                    print()
+                    InputOTP = int(input("OTP         :     "))
+
+
+                    if InputOTP == 0:
+                        self.LoginScreen(EnableOTP=True)
+
+                    elif int(InputOTP) == SentOTP:
                         print("\nLogin Successful !")
                         self.PreferenceScreen()
                         break
+
 
                     else:
                         print(f"\nInvalid OTP!\nYou have {ATTEMPTS - 3} attempts Left!")
@@ -101,7 +118,7 @@ class Screen:
                         break
 
                     else:
-                        print(f"\nIncorrect Password!\nYou have {3 - ATTEMPTS} attempts Left!")
+                        print(f"\nIncorrect Password!\nYou have {-1*(3 - ATTEMPTS)} attempts Left!")
                         print("\n##########################################################################################\n")
                 print("Please Try Again Later !")
                 time.sleep(3)
@@ -179,7 +196,10 @@ class Screen:
         print("\n##########################################################################################\n")
         # GetProperty from server # get graph
 
-        self.Property = readJson('Property.json')
+        self.Property = ''
+        while len(self.Property) == 0:
+            self.Property = readJson('Property.json')
+
         self.PropertyList = GetPropertyList(self.Property)
 
         print("Based on your preferences, here are some properties that you may like.")
@@ -191,21 +211,45 @@ class Screen:
         SAMPLE_SIZE = 3
         Sample = SimpleRandomSample(self.PropertyList, SAMPLE_SIZE)
 
-        for i in range(0,3):
+        for i in range(0, 3):
             ID = Sample[i]
             self.DisplayProperty(ID)
 
-        root = self.SeenList[0]
+        Root1 = self.SeenList[0]
+        Root2 = self.SeenList[1]
+        Root3 = self.SeenList[2]
 
-        graph = Graph(self.Property)
+        # Change Start
+        graph1 = Graph(Root_node=Root1, Samplelist=Sample, PropertyDict=self.Property)
+        graph2 = Graph(Root_node=Root2, Samplelist=Sample, PropertyDict=self.Property)
+        graph3 = Graph(Root_node=Root3, Samplelist=Sample, PropertyDict=self.Property)
+
         matrix = Matrix()
-        matrix.AppendMatrix(graph.getmatrix())
 
-        Rank = matrix.GetRank()
-        for ID in Rank:
-            if ID not in self.SeenList:
-                self.DisplayProperty(ID)
+        matrix.AppendMatrix(graph1.getmatrix())
+        Rank1 = matrix.GetRank()
 
+        matrix.AppendMatrix(graph2.getmatrix())
+        Rank2 = matrix.GetRank()
+
+        matrix.AppendMatrix(graph3.getmatrix())
+        Rank3 = matrix.GetRank()
+
+        Rank1 = RomoveRoot(Root1, Rank1)
+        Rank2 = RomoveRoot(Root2, Rank2)
+        Rank3 = RomoveRoot(Root3, Rank3)
+
+        FinalRank = CompareRanking(Rank1, Rank2, Rank3)
+
+        for ID in FinalRank:
+            self.DisplayProperty(ID)
+
+        print("\n##########################################################################################\n")
+        print("#                                       END OF PAGE                                       #")
+        print("\n##########################################################################################\n")
+        print("\nPlease update your preferences, to  search for more properties.\n")
+
+        self.PreferenceScreen()
 
     def DisplayProperty(self, PropertyID):
         Text = f"""Property ID {PropertyID}.
@@ -238,10 +282,8 @@ class Screen:
 
             if RequestBooking == "y":
                 booking = Booking(PropertyID)
-                while not True:
-                    booking.FindAvailability(UserID)
+                booking.BookAppointments()
 
-                # Booking procedure
 
         TimeDuration = End_time - Start_time
         if PropertyID in self.LikedProperties:

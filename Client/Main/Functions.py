@@ -66,16 +66,42 @@ def SimpleRandomSample(PropertyList, SAMPLE_SIZE):
     Sample = []
     PopulationSize = len(PropertyList)
 
-    for i in range(SAMPLE_SIZE):
-        index = random.randint(0 , PopulationSize - 1)
+    while len(Sample) != 3:
+        index = random.randint(0, PopulationSize - 1)
         SampleUnit = PropertyList[index]
-        Sample.append(SampleUnit)
+
+        if SampleUnit not in Sample:
+            Sample.append(SampleUnit)
 
     return Sample
 
 def ShowProperties(PropertyList, Property):
     SAMPLE_SIZE = 3
     Sample = SimpleRandomSample(PropertyList, SAMPLE_SIZE)
+
+
+def RomoveRoot(Root, PropertyList):
+    index = PropertyList.index(Root)
+
+    del PropertyList[index]
+
+    return PropertyList
+
+
+def CompareRanking(Rank1, Rank2, Rank3):
+    FinalRank = []
+    for index in range(0, len(Rank1)):
+
+        if Rank1[index] == Rank2[index]:
+            FinalRank.append(Rank1[index])
+
+        elif Rank2[index] == Rank3[index]:
+            FinalRank.append(Rank1[index])
+
+        elif Rank1[index] == Rank3[index]:
+            FinalRank.append(Rank1[index])
+
+    return FinalRank
 
 
 

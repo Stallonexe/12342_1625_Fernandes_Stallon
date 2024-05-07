@@ -1,10 +1,15 @@
 class Graph:
-    def __init__(self, PropertyDict):
-        self.Property = PropertyDict
+    def __init__(self, Root_node, Samplelist, PropertyDict):
+
+        self.Sample = Samplelist
+        self.root = Root_node
+        self.Property = PropertyDict.copy()
 
         self.graph = {}
         self.Matrix = {}
 
+
+        self.FilterDictionary() #Change
         self.MainProcedure()
 
     def MainProcedure(self):
@@ -14,15 +19,24 @@ class Graph:
                 if Head != Tail:
                     self.findlink(Head, Tail)
         self.addweights()
+    #change start
+    def FilterDictionary(self):
+        print(self.Property)
+        print(self.Sample)
+        for SampleNode in self.Sample:
+            if SampleNode != self.root:
+                del self.Property[SampleNode]
+
+                print(self.Property)
+                print(self.Sample)
 
     def LoadGraph(self):
         for i in self.Property:
             self.graph[i] = {}
             for j in self.Property:
                 self.graph[i][j] = 0
+    #End Change
 
-    def set_root_node(self, root_node):
-        self.startnode = root_node
 
     def findlink(self, HeadNode, TailNode):
         if self.Property[HeadNode]["PostCode"][:2] == self.Property[TailNode]["PostCode"][:2]:
@@ -62,7 +76,10 @@ class Graph:
                 OutboundLinks += links
             #print(f"{HeadNode}: {OutboundLinks}")
 
-            Weight = 1 / OutboundLinks
+            if OutboundLinks == 0:
+                Weight = 0
+            else:
+                Weight = 1 / OutboundLinks
 
             for TailNode in self.graph:
                 self.graph[HeadNode][TailNode] *= Weight
@@ -78,29 +95,3 @@ class Graph:
 
 
 
-
-
-
-
-
-
-def CreateGraph():
-    graph = Graph(Property)
-
-    print(graph.graph)
-    print()
-
-
-
-
-    for HeadNode in Property:
-        print(f"{HeadNode}: {graph.graph[HeadNode]}")
-
-    print()
-
-    print(graph.getmatrix())
-
-
-
-
-#CreateGraph()
