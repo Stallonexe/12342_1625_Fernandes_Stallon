@@ -1,7 +1,7 @@
 import time
-from Functions import *
-from Booking import *
-from Email_Sender import email
+from Client.Functions import *
+from Client.Modules.Email_Sender import email
+from Client.Modules.Client import *
 
 
 
@@ -100,6 +100,8 @@ class Screen:
         else:
             print()
             UserEmail = input("Enter Email :     ")
+
+            Send(f"!Verify Email {UserEmail}")
             VerifyEmail = True  # server
 
             if VerifyEmail == True:
@@ -162,9 +164,13 @@ class Screen:
             UserEmail, Password, RepeatPassword = LoginInput()
 
         HashedPassword = HashPassword(self.Salt, Password)
-        #REGISTER WITH SERVER
+
+        server_command = f"!Register {UserEmail} {self.Salt} {HashedPassword} {UserName} {Surname} {ContactNo}"
+        Send(server_command)
+
         print("\nRegistration Successful !\nPlease Login\n")
         self.LoginScreen(EnableOTP=True)
+
 
 
 

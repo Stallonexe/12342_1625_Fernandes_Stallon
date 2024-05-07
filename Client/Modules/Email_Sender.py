@@ -5,8 +5,6 @@ import smtplib
 import random
 
 
-
-
 class Email:
     def __init__(self):
         self.sender = 'developer.housify@gmail.com'
