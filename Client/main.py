@@ -291,12 +291,13 @@ class Screen:
                 booking = Booking(PropertyID,self.UserID)
                 bookingdata = booking.BookAppointments()
 
-                Day = bookingdata[0]
-                AppointmentTime = bookingdata[1]
-                Address = self.Property[PropertyID]["address"]
-                postcode = self.Property[PropertyID]["PostCode"]
+                if len(bookingdata) != 0:
+                    Day = bookingdata[0]
+                    AppointmentTime = bookingdata[1]
+                    Address = self.Property[PropertyID]["address"]
+                    postcode = self.Property[PropertyID]["PostCode"]
 
-                email.SendBookingConfirmation(self.UserEmail, self.Name, 'St Gregorys Estate', 'Stallon', Day, AppointmentTime, Address, postcode)
+                    email.SendBookingConfirmation(self.UserEmail, self.Name, 'St Gregorys Estate', 'Stallon', Day, AppointmentTime, Address, postcode)
 
 
         TimeDuration = End_time - Start_time

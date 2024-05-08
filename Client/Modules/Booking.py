@@ -52,8 +52,8 @@ class Booking:
 
             elif BookingChoice == 'n':
                 self.BookAppointments()
+                return []
 
-                return self.BookingData
 
         except:
             pass
