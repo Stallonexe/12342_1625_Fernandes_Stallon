@@ -38,10 +38,22 @@ class Booking:
 
         BookingChoice = input("\nType anything to cancel\nDo you want to book? [y/n]").lower()
 
+        self.BookingData = []
+
         try:
             if BookingChoice == 'y':
                 self.week[Day].append(self.UserID)
+
+                self.BookingData.append(Day)
+                self.BookingData.append(self.Time)
+
+                print("\nA booking confirmation email has been sent. Please check your inbox.\n")
+                return self.BookingData
+
             elif BookingChoice == 'n':
                 self.BookAppointments()
+
+                return self.BookingData
+
         except:
             pass

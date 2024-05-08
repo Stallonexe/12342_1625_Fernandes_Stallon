@@ -1,8 +1,8 @@
 import sqlite3
 
 
-connection = sqlite3.connect('login.db')
-cursor = connection.cursor()
+#connection = sqlite3.connect('login.db')
+#cursor = connection.cursor()
 
 # Create a UserTable
 def CreateUserTable():
@@ -18,7 +18,7 @@ def CreateUserTable():
                   )''')
 
 # Create a function that will register a new user
-def register(UserEmail, UserSalt, PasswordHash, FirstName, Surname, ContactNo):
+def register(UserEmail, UserSalt, PasswordHash, FirstName, Surname, ContactNo, cursor):
     query = """INSERT INTO UserTable (UserEmail, UserSalt, PasswordHash, FirstName, Surname, ContactNo)
                       VALUES (?, ?, ?, ?, ?, ?)"""
     values = (UserEmail, UserSalt, PasswordHash, FirstName, Surname, ContactNo)
@@ -26,7 +26,7 @@ def register(UserEmail, UserSalt, PasswordHash, FirstName, Surname, ContactNo):
     cursor.execute(query, values)
 
 # Create a function that will return the Salt registered under the UserEmail
-def get_salt(UserEmail):
+def get_salt(UserEmail, cursor):
     query = """SELECT UserSalt FROM UserTable WHERE UserEmail = ?"""
     cursor.execute(query, (UserEmail,))
     User_salt = cursor.fetchone()
@@ -36,8 +36,19 @@ def get_salt(UserEmail):
     else:
         return None
 
+def get_name(UserEmail, cursor):
+    query = """SELECT FirstName FROM UserTable WHERE UserEmail = ?"""
+    cursor.execute(query, (UserEmail,))
+    FirstName = cursor.fetchone()
+
+    if len(FirstName) != 0:
+        return FirstName[0]
+    else:
+        return None
+
+
 # Create a function that check the database if the UserEmail is registered or not.
-def verify_email(UserEmail):
+def verify_email(UserEmail, cursor):
     query = """SELECT UserEmail FROM UserTable WHERE UserEmail = ?"""
     cursor.execute(query, (UserEmail,))
     User_Email = cursor.fetchone() # Store the email address fetched from database
@@ -49,7 +60,7 @@ def verify_email(UserEmail):
         return False
 
 # Create a function that check the database, if the PasswordHash matches to the one stored on the database.
-def verify_hash(UserEmail, PasswordHash):
+def verify_hash(UserEmail, PasswordHash, cursor):
     query = """SELECT PasswordHash FROM UserTable WHERE UserEmail = ?"""
     cursor.execute(query, (UserEmail,))
     User_Hash = cursor.fetchone() # Store the PasswordHash fetched from database

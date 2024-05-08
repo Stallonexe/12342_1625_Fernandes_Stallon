@@ -57,9 +57,10 @@ class Email:
 
         Your viewing request has been approved.
         
-        Address:    {Address} {PostCode}
-        Date:       {BookingDate}
-        Time:       {BookingTime}
+        Address :   {Address} 
+        PostCode:   {PostCode}
+        Day     :   {BookingDate.upper()}
+        Time    :    {BookingTime}: 00
         
         Your appointment will be with:
 
@@ -90,7 +91,7 @@ email = Email()
 
 #email.SendOTP('developer.housify@gmail.com', 'Stallon')
 #email.SendBookingConfirmation('ferns311@stgregorys.school','Stallon')
-#email.SendBookingConfirmation('ferns311@stgregorys.school', 'Stallon','St Gregorys Estate','Denzil','11/05/2024','15:00','3 Potters Road Southall', 'UB2 4AS')
+#email.SendBookingConfirmation('ferns311@stgregorys.school', 'Stallon','','Denzil','11/05/2024','15:00','3 Potters Road Southall', 'UB2 4AS')
 
 
 

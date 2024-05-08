@@ -1,7 +1,8 @@
 import time
 from Client.Functions import *
 from Client.Modules.Email_Sender import email
-from Client.Modules.Client import *
+#from Client.Modules.Client import *
+from Client.Modules.Booking import *
 
 
 
@@ -53,8 +54,8 @@ class Screen:
         print("\n##########################################################################################\n")
 
         if EnableOTP == True:
-            UserEmail = input("Enter Email :     ")
-            Name = input("Enter Name  :     ")
+            self.UserEmail = input("Enter Email :     ")
+            self.Name = input("Enter Name  :     ")
             self.UserID = "U1"
             VerifyEmail = True # server
 
@@ -63,7 +64,7 @@ class Screen:
                 ATTEMPTS = 0
 
                 try:
-                    SentOTP = email.SendOTP(UserEmail, Name)
+                    SentOTP = email.SendOTP(self.UserEmail, self.Name)
                     #print(SentOTP)
                 except:
                     print("Invalid details inputted ! \nPlease Try Again !")
@@ -74,7 +75,7 @@ class Screen:
                     #send otp
 
 
-                    print(f"\nAn OTP-Code has been sent to {UserEmail}\n Type 0 to try again\n")
+                    print(f"\nAn OTP-Code has been sent to {self.UserEmail}\n Type 0 to try again\n")
                     print()
                     InputOTP = int(input("OTP         :     "))
 
@@ -94,14 +95,14 @@ class Screen:
                 time.sleep(3)
                 self.LoginScreen(EnableOTP=False)
             else:
-                print(f"{UserEmail} is not Registered !")
+                print(f"{self.UserEmail} is not Registered !")
                 time.sleep(2)
                 self.StartMenu()
         else:
             print()
-            UserEmail = input("Enter Email :     ")
+            self.UserEmail = input("Enter Email :     ")
 
-            Send(f"!Verify Email {UserEmail}")
+            Send(f"!Verify Email {self.UserEmail}")
             VerifyEmail = True  # server
 
             if VerifyEmail == True:
@@ -157,16 +158,16 @@ class Screen:
                 ContactNo = 0
 
         print()
-        UserEmail, Password, RepeatPassword = LoginInput()
+        self.UserEmail, Password, RepeatPassword = LoginInput()
 
         while Password != RepeatPassword and len(Password) < 6:
             print("\n   *** Both Passwords Don't Match or is less than 6 characters ***\n")
-            UserEmail, Password, RepeatPassword = LoginInput()
+            self.UserEmail, Password, RepeatPassword = LoginInput()
 
         HashedPassword = HashPassword(self.Salt, Password)
 
-        server_command = f"!Register {UserEmail} {self.Salt} {HashedPassword} {UserName} {Surname} {ContactNo}"
-        Send(server_command)
+        server_command = f"!Register {self.UserEmail} {self.Salt} {HashedPassword} {UserName} {Surname} {ContactNo}"
+        #Send(server_command)
 
         print("\nRegistration Successful !\nPlease Login\n")
         self.LoginScreen(EnableOTP=True)
@@ -288,7 +289,14 @@ class Screen:
 
             if RequestBooking == "y":
                 booking = Booking(PropertyID,self.UserID)
-                booking.BookAppointments()
+                bookingdata = booking.BookAppointments()
+
+                Day = bookingdata[0]
+                AppointmentTime = bookingdata[1]
+                Address = self.Property[PropertyID]["address"]
+                postcode = self.Property[PropertyID]["PostCode"]
+
+                email.SendBookingConfirmation(self.UserEmail, self.Name, 'St Gregorys Estate', 'Stallon', Day, AppointmentTime, Address, postcode)
 
 
         TimeDuration = End_time - Start_time
