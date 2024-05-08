@@ -1,0 +1,128 @@
+
+[28/04/2024 17:23:44] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 28/04/2024 17:23:50] ('192.168.137.1', 53622) connected.
+[28/04/2024 17:23:50][('192.168.137.1', 53622)] !Verify Email stallonfernandes11@gmail.com
+[28/04/2024 17:23:50][SERVER] True
+
+[NEW CONNECTION 28/04/2024 17:23:52] ('192.168.137.1', 53623) connected.
+[28/04/2024 17:23:52][('192.168.137.1', 53623)] !Verify Email stallonfernandes11@gmail.com
+[28/04/2024 17:23:52][SERVER] True
+
+[NEW CONNECTION 28/04/2024 17:23:54] ('192.168.137.1', 53624) connected.
+[28/04/2024 17:23:54][('192.168.137.1', 53624)] !Verify Email stallonfernandes11@gmail.com
+[28/04/2024 17:23:54][SERVER] True
+
+[NEW CONNECTION 28/04/2024 17:23:57] ('192.168.137.1', 53625) connected.
+[28/04/2024 17:23:57][('192.168.137.1', 53625)] !Verify Email stallonfernandes11@gmail.com
+[28/04/2024 17:23:57][SERVER] True
+[28/04/2024 17:24:09][('192.168.137.1', 53622)] !Verify Hash stallonfernandes11@gmail.com Password123
+[28/04/2024 17:24:09][SERVER] True
+[28/04/2024 17:24:09][('192.168.137.1', 53622)] !Get Salt stallonfernandes11@gmail.com
+[28/04/2024 17:24:09][SERVER] 1
+[28/04/2024 17:24:10][('192.168.137.1', 53622)] !Verify Email stallonfernandes11@gmail.com
+[28/04/2024 17:24:10][SERVER] True
+[28/04/2024 17:24:10][('192.168.137.1', 53622)] !Send OTP stallonfernandes11@gmail.com Stallon
+[28/04/2024 17:24:11][SERVER] None
+[28/04/2024 17:24:11][('192.168.137.1', 53622)] !Send BookingConfrimation ferns311@stgregorys.school Stallon St Gregorys Estate Denzil 11/05/2024 15:00 3 Potters Road Southall UB2 4AS
+[28/04/2024 17:24:11][SERVER] None
+[28/04/2024 17:24:12][('192.168.137.1', 53622)] !DISCONNECT
+[28/04/2024 17:24:12][('192.168.137.1', 53622)] DISCONNECTED
+[28/04/2024 17:24:52][('192.168.137.1', 53623)] !Verify Hash stallonfernandes11@gmail.com Password123
+[28/04/2024 17:24:52][SERVER] True
+[28/04/2024 17:24:53][('192.168.137.1', 53623)] !Get Salt stallonfernandes11@gmail.com
+[28/04/2024 17:24:53][SERVER] 1
+[28/04/2024 17:24:53][('192.168.137.1', 53623)] !Verify Email stallonfernandes11@gmail.com
+[28/04/2024 17:24:53][SERVER] True
+[28/04/2024 17:24:53][('192.168.137.1', 53623)] !Send OTP stallonfernandes11@gmail.com Stallon
+[28/04/2024 17:24:54][SERVER] None
+[28/04/2024 17:24:54][('192.168.137.1', 53623)] !Send BookingConfrimation ferns311@stgregorys.school Stallon St Gregorys Estate Denzil 11/05/2024 15:00 3 Potters Road Southall UB2 4AS
+[28/04/2024 17:24:54][SERVER] None
+[28/04/2024 17:24:54][('192.168.137.1', 53623)] !DISCONNECT
+[28/04/2024 17:24:54][('192.168.137.1', 53623)] DISCONNECTED
+[28/04/2024 17:24:57][('192.168.137.1', 53624)] !Verify Hash stallonfernandes11@gmail.com Password123
+[28/04/2024 17:24:57][SERVER] True
+[28/04/2024 17:24:58][('192.168.137.1', 53624)] !Get Salt stallonfernandes11@gmail.com
+[28/04/2024 17:24:58][SERVER] 1
+[28/04/2024 17:24:58][('192.168.137.1', 53624)] !Verify Email stallonfernandes11@gmail.com
+[28/04/2024 17:24:58][SERVER] True
+[28/04/2024 17:24:58][('192.168.137.1', 53624)] !Send OTP stallonfernandes11@gmail.com Stallon
+[28/04/2024 17:24:59][SERVER] None
+[28/04/2024 17:24:59][('192.168.137.1', 53624)] !Send BookingConfrimation ferns311@stgregorys.school Stallon St Gregorys Estate Denzil 11/05/2024 15:00 3 Potters Road Southall UB2 4AS
+[28/04/2024 17:24:59][SERVER] None
+[28/04/2024 17:24:59][('192.168.137.1', 53624)] !DISCONNECT
+[28/04/2024 17:24:59][('192.168.137.1', 53624)] DISCONNECTED
+[28/04/2024 17:25:01][('192.168.137.1', 53625)] !Verify Hash stallonfernandes11@gmail.com Password123
+[28/04/2024 17:25:01][SERVER] True
+[28/04/2024 17:25:02][('192.168.137.1', 53625)] !Get Salt stallonfernandes11@gmail.com
+[28/04/2024 17:25:02][SERVER] 1
+[28/04/2024 17:25:02][('192.168.137.1', 53625)] !Verify Email stallonfernandes11@gmail.com
+[28/04/2024 17:25:02][SERVER] True
+[28/04/2024 17:25:02][('192.168.137.1', 53625)] !Send OTP stallonfernandes11@gmail.com Stallon
+[28/04/2024 17:25:03][SERVER] None
+[28/04/2024 17:25:03][('192.168.137.1', 53625)] !Send BookingConfrimation ferns311@stgregorys.school Stallon St Gregorys Estate Denzil 11/05/2024 15:00 3 Potters Road Southall UB2 4AS
+[28/04/2024 17:25:03][SERVER] None
+[28/04/2024 17:25:03][('192.168.137.1', 53625)] !DISCONNECT
+[28/04/2024 17:25:03][('192.168.137.1', 53625)] DISCONNECTED
+
+[29/04/2024 18:02:57] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 29/04/2024 18:04:44] ('192.168.137.1', 50815) connected.
+[29/04/2024 18:04:44][('192.168.137.1', 50815)] !Verify Email stallonfernandes11@gmail.com
+[29/04/2024 18:04:44][SERVER] True
+[29/04/2024 18:04:47][('192.168.137.1', 50815)] !Verify Hash stallonfernandes11@gmail.com Password123
+[29/04/2024 18:04:47][SERVER] True
+[29/04/2024 18:04:48][('192.168.137.1', 50815)] !Get Salt stallonfernandes11@gmail.com
+[29/04/2024 18:04:48][SERVER] 1
+[29/04/2024 18:04:50][('192.168.137.1', 50815)] !Verify Email stallonfernandes11@gmail.com
+[29/04/2024 18:04:50][SERVER] True
+[29/04/2024 18:04:50][('192.168.137.1', 50815)] !Send OTP stallonfernandes11@gmail.com Stallon
+[29/04/2024 18:04:53][SERVER] None
+[29/04/2024 18:04:53][('192.168.137.1', 50815)] !Send BookingConfrimation ferns311@stgregorys.school Stallon St Gregorys Estate Denzil 11/05/2024 15:00 3 Potters Road Southall UB2 4AS
+[29/04/2024 18:04:53][SERVER] None
+[29/04/2024 18:04:53][('192.168.137.1', 50815)] !DISCONNECT
+[29/04/2024 18:04:53][('192.168.137.1', 50815)] DISCONNECTED
+
+[NEW CONNECTION 29/04/2024 18:53:30] ('192.168.137.1', 51043) connected.
+[29/04/2024 18:53:30][('192.168.137.1', 51043)] !Verify Email stallonfernandes11@gmail.com
+[29/04/2024 18:53:30][SERVER] True
+
+[NEW CONNECTION 29/04/2024 18:54:23] ('192.168.137.1', 51045) connected.
+
+[29/04/2024 18:56:31] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 29/04/2024 18:56:59] ('192.168.137.1', 51053) connected.
+[29/04/2024 18:57:55][('192.168.137.1', 51053)] !Register stallonfernandes11@gmail.com asdghj None Stallon Fernandes 07440071467
+
+[NEW CONNECTION 29/04/2024 18:59:31] ('192.168.137.1', 51266) connected.
+[29/04/2024 19:00:08][('192.168.137.1', 51266)] !Register stallon@gmail.com asdghj d2f057985819eaefa79df1866bd9f63e0c81029c8db79256d829914357360a3f Stallon Fernandes 07440423797
+[29/04/2024 19:00:08][SERVER] 
+
+[NEW CONNECTION 29/04/2024 19:01:57] ('192.168.137.1', 51201) connected.
+[29/04/2024 19:03:28][('192.168.137.1', 51201)] !Register ferns311@stgregorys.school asdghj d2f057985819eaefa79df1866bd9f63e0c81029c8db79256d829914357360a3f Kinnen Antao 07438967944
+[29/04/2024 19:03:28][SERVER] 
+
+[NEW CONNECTION 29/04/2024 19:06:26] ('192.168.137.1', 57941) connected.
+[29/04/2024 20:30:17][('192.168.137.1', 57941)] !Register JIU asdghj 048f1a9e3ca59ab9bc288b89b189365d0cebac397993bf81b2f0310179f21431 f f 95
+[29/04/2024 20:30:17][SERVER] 
+
+[29/04/2024 20:39:24] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 29/04/2024 20:39:35] ('192.168.137.1', 58364) connected.
+
+[29/04/2024 20:48:22] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 29/04/2024 20:48:34] ('192.168.137.1', 58377) connected.
+[29/04/2024 20:49:30][('192.168.137.1', 58377)] !Register ferns311@stgregorys.school asdghj 429fc06f2733d6638fd93b39d29ef445bda6e53c1a633c319f8b3ea91f07fb6b Stallon Fernandes 0123456789
+
+[29/04/2024 20:51:27] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 29/04/2024 20:51:31] ('192.168.137.1', 58390) connected.
+[29/04/2024 20:55:48][('192.168.137.1', 58390)] !Register example@gmail.com asdghj d2f057985819eaefa79df1866bd9f63e0c81029c8db79256d829914357360a3f John Smith 0123456789
+[29/04/2024 20:55:48][SERVER]

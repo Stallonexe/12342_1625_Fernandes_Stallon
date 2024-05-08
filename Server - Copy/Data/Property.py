@@ -1,14 +1,27 @@
 import sqlite3
-from Server.Modules.functions import *
 
 class Property:
-    def __init__(self):
+    def __init__(self, PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating):
+        # Attributes
+        self.PropertyID = PropertyID
+        self.price = int(price)
+        self.address = address
+        self.postcode = postcode
+        self.bedroom = int(bedroom)
+        self.bathroom = int(bathroom)
+        self.living_room = int(living_room)
+        self.tenure = tenure
+        self.tax_band = tax_band
+        self.property_type = property_type
+        self.EPC_rating = EPC_rating
+
         # Database
-        self.connection = sqlite3.connect('Database/Property.db')
+        self.connection = sqlite3.connect('Property.db')
         self.cursor = self.connection.cursor()
 
         #Methods
         self.CreatePropertyTable()
+        self.AddProperty()
 
     def CreatePropertyTable(self):
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS PropertyTable
@@ -26,9 +39,9 @@ class Property:
                               EPC_rating CHAR(1)
                               )''')
 
-    def AddProperty(self, PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating ):
+    def AddProperty(self):
         query = """INSERT INTO PropertyTable (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
-        values = (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating)
+        values = (self.PropertyID, self.price, self.address, self.postcode, self.bedroom, self.bathroom, self.living_room, self.tenure, self.tax_band, self.property_type, self.EPC_rating)
 
         self.cursor.execute(query, values)
         self.connection.commit()
@@ -104,41 +117,23 @@ class Property:
 
         return EPC_rating
 
-    def GetProperty(self,UserID, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type):
+    def GetProperty(self, PropertyID):
+        price = self.get_price(PropertyID)
+        address = self.get_address(PropertyID)
+        postcode = self.get_postcode(PropertyID)
+        bedroom = self.get_bedroom(PropertyID)
+        bathroom = self.get_bathroom(PropertyID)
+        living_room = self.get_living_room(PropertyID)
+        tenure = self.get_tenure(PropertyID)
+        tax_band = self.get_tax_band(PropertyID)
+        property_type = self.get_property_type(PropertyID)
+        EPC_rating = self.get_EPC_rating(PropertyID)
 
-        PropertyIDList = self.GetPreferredPropertyIDList(max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type)
 
-        self.Property = {}
+        return f"{price} {address} {postcode} {bedroom} {bathroom} {living_room} {tenure} {tax_band} {property_type} {EPC_rating}"
 
-        for PropertyID in PropertyIDList:
-
-            address = self.get_address(PropertyID)
-            postcode = self.get_postcode(PropertyID)
-            price = self.get_price(PropertyID)
-            bedroom = self.get_bedroom(PropertyID)
-            bathroom = self.get_bathroom(PropertyID)
-            living_room = self.get_living_room(PropertyID)
-            tenure = self.get_tenure(PropertyID)
-            tax_band = self.get_tax_band(PropertyID)
-            property_type = self.get_property_type(PropertyID)
-            EPC_rating = self.get_EPC_rating(PropertyID)
-
-            self.Property[PropertyID]["address"] = address
-            self.Property[PropertyID]["PostCode"] = postcode
-            self.Property[PropertyID]["Price"] = price
-            self.Property[PropertyID]["Bedroom"] = bedroom
-            self.Property[PropertyID]["Bathroom"] = bathroom
-            self.Property[PropertyID]["living_rooms"] = living_room
-            self.Property[PropertyID]["tenure"] = tenure
-            self.Property[PropertyID]["tax_band"] = tax_band
-            self.Property[PropertyID]["property_type"] = property_type
-            self.Property[PropertyID]["EPC_rating"] = EPC_rating
-
-        filepath = f"JsonFiles/{UserID}.json"
-        writeJson(self.Property, filepath)
-        return True
-
-    def GetPreferredPropertyIDList(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type):
+    def GetPreferredPropertyID(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,
+                               property_type):
         query = """SELECT PropertyID FROM PropertyTable 
              WHERE Price BETWEEN? AND? 
              AND Postcode =? 
@@ -168,4 +163,4 @@ class Property:
         self.cursor.execute(query, values)
         self.connection.commit()
 
-House = Property()
+House = property()

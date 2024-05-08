@@ -1,5 +1,3 @@
-import sqlite3
-
 from Data.Users import User
 from Data.Property import Property
 
