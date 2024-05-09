@@ -54,7 +54,7 @@ def ServerClient(conn, addr):
 
             else:
                 # Pass the cursor to the execute function
-                reply = execute(msg, cursor, connection)
+                reply = decoder.execute(message=msg)
 
                 try:
                     conn.send(reply.encode(FORMAT))

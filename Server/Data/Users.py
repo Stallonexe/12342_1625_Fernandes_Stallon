@@ -1,15 +1,7 @@
 import sqlite3
 
 class User:
-    def __init__(self, UserEmail, UserSalt, Password, FirstName, Surname, ContactNo):
-
-        #Attributes
-        self.Email = UserEmail
-        self.Salt = UserSalt
-        self.Password = Password
-        self.Name = FirstName
-        self.Surname = Surname
-        self.ContactNo = int(ContactNo)
+    def __init__(self):
 
         #Database
         self.connection = sqlite3.connect('login.db')
@@ -31,9 +23,9 @@ class User:
                               ContactNo CHAR(11) NOT NULL
                               )''')
 
-    def RegisterUser(self):
+    def RegisterUser(self, UserEmail, UserSalt, Password, FirstName, Surname, ContactNo):
         query = """INSERT INTO UserTable (UserEmail, UserSalt, PasswordHash, FirstName, Surname, ContactNo) VALUES (?, ?, ?, ?, ?, ?)"""
-        values = (self.Email, self.Salt, self.Password, self.Name, self.Surname, self.ContactNo)
+        values = (UserEmail, UserSalt, Password, FirstName, Surname, ContactNo,)
 
         self.cursor.execute(query, values)
         self.connection.commit()
@@ -47,6 +39,17 @@ class User:
             return User_salt[0]
         else:
             return None
+
+    def GetName(self, Email):
+        query = """SELECT FirstName FROM UserTable WHERE UserEmail = ?"""
+        self.cursor.execute(query, (Email,))
+        Name = self.cursor.fetchone()
+
+        if len(Name) != 0:
+            return Name[0]
+        else:
+            return None
+
 
     def VerifyEmail(self, UserEmail):
         query = """SELECT UserEmail FROM UserTable WHERE UserEmail = ?"""
@@ -69,3 +72,4 @@ class User:
             return True
         else:
             return False
+

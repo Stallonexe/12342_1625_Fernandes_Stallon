@@ -1,11 +1,11 @@
 import sqlite3
 
-from Data.Users import User
-from Data.Property import Property
+from Data.Property import *
+from Data.Users import *
 
 
-from Email_System.Email_Sender import *
-from Server.Server_Login_System import *
+#from Email_System.Email_Sender import *
+#from Server.Server_Login_System import *
 
 
 class Command:
@@ -13,6 +13,9 @@ class Command:
         self.LoginFILEPATH = "Server\Files\login.db"
         self.PropertyFILEPATH = "Server\Files\Property.db"
         self.BookingFILEPATH = "Server\Files\Booking.db"  # No such file yet
+
+        self.User = User()
+        self.Property = PropertySQL()
 
     def ConnectLoginDatabase(self):
         self.connection = sqlite3.connect(self.LoginFILEPATH)
@@ -28,16 +31,19 @@ class Command:
 
     def execute(self, message):
         command = message.split()
+        print(command)
 
         if command[0] == "Create":
 
             if command[1] == "RegUser":
-                self.ConnectLoginDatabase()
-                register(command[2], command[3], command[4], command[5], command[6], command[7], self.cursor)
+                #self.ConnectLoginDatabase()
+                self.User.RegisterUser(command[2], command[3], command[4], command[5], command[6], command[7])
+                return ""
 
             elif command[1] == "RegProperty":
-                self.ConnectPropertyDatabase()
-                # make property commands + sql
+                #self.ConnectPropertyDatabase()
+                self.Property.AddProperty(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10], command[11], command[12])
+                return ""
 
             elif command[1] == "Booking":
                 self.ConnectBookingDatabase()
@@ -50,17 +56,15 @@ class Command:
 
             if command[1] == "Salt":
 
-                self.ConnectLoginDatabase()
-                salt = get_salt(command[2], self.cursor)
+                #self.ConnectLoginDatabase()
+                salt = self.User.GetSalt(command[2])
                 return salt
 
             elif command[1] == "Name":
 
-                self.ConnectLoginDatabase()
-                Name = get_name(command[2], self.cursor)
-
-            elif command[1] == "PropertyList":
-                self.ConnectPropertyDatabase()
+                #self.ConnectLoginDatabase()
+                Name = self.User.GetName(command[2])
+                return Name
 
 
         elif command[0] == "Delete":
@@ -72,26 +76,28 @@ class Command:
                 return None  # for future features
 
         elif command[0] == "Verify":
-            self.ConnectLoginDatabase()
 
             if command[1] == "Email":
-                verify = verify_email(command[2], self.cursor)
+                verify = self.User.VerifyEmail(command[2])
                 return verify
 
             if command[1] == "Password":
-                verify = verify_hash(command[2], command[3], self.cursor)
+                verify = self.User.VerifyPassword(command[2], command[3])
                 return verify
 
         elif command[0] == "Send":
 
             if command[1] == "PropertyJSON":
-                self.ConnectPropertyDatabase()
-                Property = {}  # create a subroutine that qeury property.db, that will return dict contain property info
-                # takes list of propertyIDs as parameter
+                saved = self.Property.GetProperty(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10])
+
+                if saved == True:
+                    return True
+                else:
+                    return False
 
 
-com = Command()
-com.execute("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
+decoder = Command()
+decoder.execute("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
 
 # execute("Create RegUser dorisanta@il. ABCDEF Password FirstName Surname 07440423797", "", "")
 # execute("Create RegProperty ASDFGH 450000 77CoplandRoad HA04YF 1 1 1 Freehold C Flat C","","")

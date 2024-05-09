@@ -1,7 +1,7 @@
 import sqlite3
 from Server.Modules.functions import *
 
-class Property:
+class PropertySQL:
     def __init__(self):
         # Database
         self.connection = sqlite3.connect('Database/Property.db')
@@ -143,8 +143,7 @@ class Property:
 
         return True
 
-    def GetPreferredPropertyIDList(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,
-                                   property_type):
+    def GetPreferredPropertyIDList(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure, property_type):
         query = """SELECT PropertyID FROM PropertyTable 
              WHERE price BETWEEN ? AND ? 
              AND postcode LIKE ? || '%'
@@ -173,7 +172,7 @@ class Property:
         self.cursor.execute(query, values)
         self.connection.commit()
 
-House = Property()
+House = PropertySQL()
 House.AddProperty('H1', 435000, '3 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
 House.AddProperty('H2', 450000, '1 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
 House.AddProperty('H3', 425000, '17 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
