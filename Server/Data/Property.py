@@ -125,6 +125,7 @@ class Property:
             property_type = self.get_property_type(PropertyID)
             EPC_rating = self.get_EPC_rating(PropertyID)
 
+
             self.Property[PropertyID]["address"] = address[0]
             self.Property[PropertyID]["PostCode"] = postcode[0]
             self.Property[PropertyID]["Price"] = price[0]
