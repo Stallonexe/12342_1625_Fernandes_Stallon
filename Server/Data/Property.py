@@ -13,9 +13,9 @@ class Property:
     def CreatePropertyTable(self):
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS PropertyTable
                               (
-                              PropertyID CHAR(6) PRIMARY KEY NOT NULL,
+                              PropertyID VARCHAR(6) PRIMARY KEY NOT NULL,
                               address VARCHAR(320) NOT NULL,
-                              postcode CHAR(6) UNIQUE NOT NULL,
+                              postcode CHAR(6) NOT NULL,
                               price INTEGER NOT NULL,
                               bedroom INTEGER NOT NULL,
                               bathroom INTEGER NOT NULL,
@@ -28,7 +28,7 @@ class Property:
 
     def AddProperty(self, PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating ):
         query = """INSERT INTO PropertyTable (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
-        values = (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating)
+        values = (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating,)
 
         self.cursor.execute(query, values)
         self.connection.commit()
@@ -112,6 +112,8 @@ class Property:
 
         for PropertyID in PropertyIDList:
 
+            self.Property[PropertyID] = {}
+
             address = self.get_address(PropertyID)
             postcode = self.get_postcode(PropertyID)
             price = self.get_price(PropertyID)
@@ -135,20 +137,22 @@ class Property:
             self.Property[PropertyID]["EPC_rating"] = EPC_rating
 
         filepath = f"JsonFiles/{UserID}.json"
+        #g = 'Server/Data/JsonFiles'
         writeJson(self.Property, filepath)
+
         return True
 
     def GetPreferredPropertyIDList(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type):
         query = """SELECT PropertyID FROM PropertyTable 
-             WHERE Price BETWEEN? AND? 
-             AND Postcode =? 
-             AND Bedrooms <=? 
-             AND Bathrooms <=? 
-             AND LivingRooms <=? 
-             AND Tenure =? 
-             AND PropertyType =?"""
+                 WHERE Price BETWEEN ? AND ? 
+                 AND LEFT(Postcode, 2) = ? 
+                 AND Bedrooms <= ? 
+                 AND Bathrooms <= ? 
+                 AND LivingRooms <= ? 
+                 AND Tenure = ? 
+                 AND PropertyType = ?"""
 
-        values = (min_price, max_price, postcode, bedroom, bathroom, living_room, tenure, property_type)
+        values = (min_price, max_price, postcode[:2], bedroom, bathroom, living_room, tenure, property_type)
 
         self.cursor.execute(query, values)
 
@@ -163,9 +167,14 @@ class Property:
 
     def set_price(self, new_price, PropertyID):
         query = """UPDATE PropertyTable SET price = ? WHERE property_id = ?"""
-        values = (new_price, PropertyID)
+        values = (new_price, PropertyID,)
 
         self.cursor.execute(query, values)
         self.connection.commit()
 
 House = Property()
+House.AddProperty('H1', 435000, '3 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
+House.AddProperty('H2', 450000, '1 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
+House.AddProperty('H3', 425000, '17 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
+
+House.GetProperty('U1', 500000, 0, 'UB', 2, 2, 1, 'FREEHOLD', 'TERRACED')
