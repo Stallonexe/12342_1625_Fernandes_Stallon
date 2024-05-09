@@ -36,70 +36,70 @@ class Property:
     # Get Functions
     def get_price(self, PropertyID):
         query = """SELECT price FROM PropertyTable WHERE PropertyID = ?"""
-        self.cursor.execute(query, (PropertyID,))
+        self.cursor.execute(query, (str(PropertyID),))
         price = self.cursor.fetchone()
 
         return price
 
     def get_address(self, PropertyID):
         query = """SELECT address FROM PropertyTable WHERE PropertyID = ?"""
-        self.cursor.execute(query, (PropertyID,))
+        self.cursor.execute(query, (str(PropertyID),))
         address = self.cursor.fetchone()
 
         return address
 
     def get_postcode(self, PropertyID):
         query = """SELECT postcode FROM PropertyTable WHERE PropertyID = ?"""
-        self.cursor.execute(query, (PropertyID,))
+        self.cursor.execute(query, (str(PropertyID),))
         postcode = self.cursor.fetchone()
 
         return postcode
 
     def get_bedroom(self, PropertyID):
         query = """SELECT bedroom FROM PropertyTable WHERE PropertyID = ?"""
-        self.cursor.execute(query, (PropertyID,))
+        self.cursor.execute(query, (str(PropertyID),))
         bedroom = self.cursor.fetchone()
 
         return bedroom
 
     def get_bathroom(self, PropertyID):
         query = """SELECT bathroom FROM PropertyTable WHERE PropertyID = ?"""
-        self.cursor.execute(query, (PropertyID,))
+        self.cursor.execute(query, (str(PropertyID),))
         bathroom = self.cursor.fetchone()
 
         return bathroom
 
     def get_living_room(self, PropertyID):
         query = """SELECT living_room FROM PropertyTable WHERE PropertyID = ?"""
-        self.cursor.execute(query, (PropertyID,))
+        self.cursor.execute(query, (str(PropertyID),))
         living_room = self.cursor.fetchone()
 
         return living_room
 
     def get_tenure(self, PropertyID):
         query = """SELECT tenure FROM PropertyTable WHERE PropertyID = ?"""
-        self.cursor.execute(query, (PropertyID,))
+        self.cursor.execute(query, (str(PropertyID),))
         tenure = self.cursor.fetchone()
 
         return tenure
 
     def get_tax_band(self, PropertyID):
         query = """SELECT tax_band FROM PropertyTable WHERE PropertyID = ?"""
-        self.cursor.execute(query, (PropertyID,))
+        self.cursor.execute(query, (str(PropertyID),))
         tax_band = self.cursor.fetchone()
 
         return tax_band
 
     def get_property_type(self, PropertyID):
         query = """SELECT property_type FROM PropertyTable WHERE PropertyID = ?"""
-        self.cursor.execute(query, (PropertyID,))
+        self.cursor.execute(query, (str(PropertyID),))
         property_type = self.cursor.fetchone()
 
         return property_type
 
     def get_EPC_rating(self, PropertyID):
         query = """SELECT EPC_rating FROM PropertyTable WHERE PropertyID = ?"""
-        self.cursor.execute(query, (PropertyID,))
+        self.cursor.execute(query, (str(PropertyID),))
         EPC_rating = self.cursor.fetchone()
 
         return EPC_rating
@@ -110,9 +110,9 @@ class Property:
 
         self.Property = {}
 
-        for PropertyID in PropertyIDList:
-
-            self.Property[PropertyID] = {}
+        for PropertyID_tuple in PropertyIDList:
+            PropertyID = PropertyID_tuple[0]  # Extracting the PropertyID from the tuple
+            self.Property[PropertyID] = {}  # Creating a dictionary entry with the extracted PropertyID as the key
 
             address = self.get_address(PropertyID)
             postcode = self.get_postcode(PropertyID)
@@ -142,17 +142,18 @@ class Property:
 
         return True
 
-    def GetPreferredPropertyIDList(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type):
+    def GetPreferredPropertyIDList(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,
+                                   property_type):
         query = """SELECT PropertyID FROM PropertyTable 
-                 WHERE Price BETWEEN ? AND ? 
-                 AND LEFT(Postcode, 2) = ? 
-                 AND Bedrooms <= ? 
-                 AND Bathrooms <= ? 
-                 AND LivingRooms <= ? 
-                 AND Tenure = ? 
-                 AND PropertyType = ?"""
+             WHERE price BETWEEN ? AND ? 
+             AND postcode LIKE ? || '%'
+             AND bedroom <= ? 
+             AND bathroom <= ? 
+             AND living_room <= ? 
+             AND tenure = ? 
+             AND property_type = ?"""
 
-        values = (min_price, max_price, postcode[:2], bedroom, bathroom, living_room, tenure, property_type)
+        values = (min_price, max_price, postcode[:2], bedroom, bathroom, living_room, tenure, property_type,)
 
         self.cursor.execute(query, values)
 
@@ -162,8 +163,7 @@ class Property:
 
         return PropertyIDs
 
-
-  #set functions (Sets the value of attributes for a given object)
+    #set functions (Sets the value of attributes for a given object)
 
     def set_price(self, new_price, PropertyID):
         query = """UPDATE PropertyTable SET price = ? WHERE property_id = ?"""
