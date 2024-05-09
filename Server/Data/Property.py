@@ -125,16 +125,16 @@ class Property:
             property_type = self.get_property_type(PropertyID)
             EPC_rating = self.get_EPC_rating(PropertyID)
 
-            self.Property[PropertyID]["address"] = address
-            self.Property[PropertyID]["PostCode"] = postcode
-            self.Property[PropertyID]["Price"] = price
-            self.Property[PropertyID]["Bedroom"] = bedroom
-            self.Property[PropertyID]["Bathroom"] = bathroom
-            self.Property[PropertyID]["living_rooms"] = living_room
-            self.Property[PropertyID]["tenure"] = tenure
-            self.Property[PropertyID]["tax_band"] = tax_band
-            self.Property[PropertyID]["property_type"] = property_type
-            self.Property[PropertyID]["EPC_rating"] = EPC_rating
+            self.Property[PropertyID]["address"] = address[0]
+            self.Property[PropertyID]["PostCode"] = postcode[0]
+            self.Property[PropertyID]["Price"] = price[0]
+            self.Property[PropertyID]["Bedroom"] = bedroom[0]
+            self.Property[PropertyID]["Bathroom"] = bathroom[0]
+            self.Property[PropertyID]["living_rooms"] = living_room[0]
+            self.Property[PropertyID]["tenure"] = tenure[0]
+            self.Property[PropertyID]["tax_band"] = tax_band[0]
+            self.Property[PropertyID]["property_type"] = property_type[0]
+            self.Property[PropertyID]["EPC_rating"] = EPC_rating[0]
 
         filepath = f"JsonFiles/{UserID}.json"
         #g = 'Server/Data/JsonFiles'
