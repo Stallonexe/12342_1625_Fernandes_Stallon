@@ -1,5 +1,11 @@
 import sqlite3
-from Server.Modules.functions import *
+import json
+#from Server.Modules.functions import *
+
+def writeJson(Dictionary, filename):
+    with open(filename,'w') as json_file:
+        json.dump(Dictionary, json_file)
+    json_file.close()
 
 class PropertySQL:
     def __init__(self):
@@ -172,9 +178,9 @@ class PropertySQL:
         self.cursor.execute(query, values)
         self.connection.commit()
 
-House = PropertySQL()
-House.AddProperty('H1', 435000, '3 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
-House.AddProperty('H2', 450000, '1 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
-House.AddProperty('H3', 425000, '17 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
+#House = PropertySQL()
+#House.AddProperty('H1', 435000, '3 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
+#House.AddProperty('H2', 450000, '1 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
+#House.AddProperty('H3', 425000, '17 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
 
-House.GetProperty('U1', 500000, 0, 'UB', 2, 2, 1, 'FREEHOLD', 'TERRACED')
+#House.GetProperty('U1', 500000, 0, 'UB', 2, 2, 1, 'FREEHOLD', 'TERRACED')

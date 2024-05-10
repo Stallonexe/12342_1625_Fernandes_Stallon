@@ -126,3 +126,51 @@
 [NEW CONNECTION 29/04/2024 20:51:31] ('192.168.137.1', 58390) connected.
 [29/04/2024 20:55:48][('192.168.137.1', 58390)] !Register example@gmail.com asdghj d2f057985819eaefa79df1866bd9f63e0c81029c8db79256d829914357360a3f John Smith 0123456789
 [29/04/2024 20:55:48][SERVER]
+[10/05/2024 04:37:23] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[10/05/2024 04:43:24] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[10/05/2024 04:45:37] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[10/05/2024 04:45:53] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[10/05/2024 04:46:32] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[10/05/2024 04:47:36] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[10/05/2024 04:48:40] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[10/05/2024 04:49:50] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[10/05/2024 04:50:01] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[10/05/2024 05:21:13] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[10/05/2024 05:27:36] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 05:27:51] ('192.168.137.1', 57472) connected.
+[10/05/2024 05:27:51][('192.168.137.1', 57472)] Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797
+
+[10/05/2024 05:29:01] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 05:29:05] ('192.168.137.1', 57475) connected.
+[10/05/2024 05:29:05][('192.168.137.1', 57475)] Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797
+[10/05/2024 05:29:05][SERVER] 
+
+[10/05/2024 05:35:30] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 05:35:40] ('192.168.137.1', 57526) connected.
+[10/05/2024 05:35:40][('192.168.137.1', 57526)] Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797

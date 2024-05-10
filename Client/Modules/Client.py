@@ -21,6 +21,13 @@ def Send(msg):
     client.send(message)
     print(client.recv(2048).decode(FORMAT))
 
+Send("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
+Send("Retrieve Salt stallonfernandes11@gmail.com")
+Send("Verify Email stallonfernandes11@gmail.com")
+Send("Verify Password stallonfernandes11@gmail.com  Password")
+Send("Verify Email stallonfernandes11@gmail.com")
+
+
 
 #Send("!Register stallonfernandes11@gmail.com 162558 Password123 Stallon Fernandes 0123456789")
 #Send("!Verify Email stallonfernandes11@gmail.com")

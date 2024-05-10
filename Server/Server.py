@@ -32,7 +32,7 @@ def ServerClient(conn, addr):
     log(display_text)
 
     # Create a new connection and cursor for this thread
-    connection = sqlite3.connect('login.db')
+    connection = sqlite3.connect('Data/Database/login.db')
     cursor = connection.cursor()
 
     connected = True
@@ -54,14 +54,17 @@ def ServerClient(conn, addr):
 
             else:
                 # Pass the cursor to the execute function
+                decoder = Command()
                 reply = decoder.execute(message=msg)
 
                 try:
                     conn.send(reply.encode(FORMAT))
                     log(f"[{CurrentTime()}][SERVER] {reply}")
+                    print(reply)
                 except:
                     conn.send("Done".encode(FORMAT))
                     log(f"[{CurrentTime()}][SERVER] {reply}")
+                    print("Done")
 
 
     conn.close()
