@@ -57,14 +57,14 @@ def ServerClient(conn, addr):
                 decoder = Command()
                 reply = decoder.execute(message=msg)
 
-                try:
+                print(reply)
+                if reply is not None and len(reply) != 0:
                     conn.send(reply.encode(FORMAT))
                     log(f"[{CurrentTime()}][SERVER] {reply}")
-                    print(reply)
-                except:
+                else:
                     conn.send("Done".encode(FORMAT))
                     log(f"[{CurrentTime()}][SERVER] {reply}")
-                    print("Done")
+
 
 
     conn.close()

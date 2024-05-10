@@ -191,3 +191,81 @@
 [NEW CONNECTION 10/05/2024 05:58:24] ('192.168.137.1', 57910) connected.
 [10/05/2024 05:58:24][('192.168.137.1', 57910)] Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797
 [10/05/2024 05:58:24][SERVER] 
+
+[10/05/2024 06:02:03] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 06:02:11] ('192.168.137.1', 57939) connected.
+[10/05/2024 06:02:11][('192.168.137.1', 57939)] Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797
+[10/05/2024 06:02:11][SERVER] 
+
+[NEW CONNECTION 10/05/2024 06:05:06] ('192.168.137.1', 57945) connected.
+[10/05/2024 06:05:06][('192.168.137.1', 57945)] Retrieve Salt stallonfernandes11@gmail.com
+[10/05/2024 06:05:06][SERVER] ABCDEF
+[10/05/2024 06:05:06][('192.168.137.1', 57945)] Verify Email stallonfernandes11@gmail.com
+[10/05/2024 06:05:06][SERVER] True
+[10/05/2024 06:05:06][('192.168.137.1', 57945)] Verify Password stallonfernandes11@gmail.com  Password
+[10/05/2024 06:05:06][SERVER] True
+[10/05/2024 06:05:06][('192.168.137.1', 57945)] Verify Email stallonfernandes11@gmail.com
+[10/05/2024 06:05:06][SERVER] True
+
+[10/05/2024 06:06:11] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 06:06:19] ('192.168.137.1', 57949) connected.
+[10/05/2024 06:06:19][('192.168.137.1', 57949)] Retrieve Salt stallonfernandes11@gmail.com
+[10/05/2024 06:06:19][SERVER] ABCDEF
+[10/05/2024 06:06:19][('192.168.137.1', 57949)] Verify Email stallonfernandes11@gmail.com
+
+[10/05/2024 06:07:29] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 06:07:37] ('192.168.137.1', 57952) connected.
+[10/05/2024 06:07:37][('192.168.137.1', 57952)] Retrieve Salt stallonfernandes11@gmail.com
+[10/05/2024 06:07:37][SERVER] ABCDEF
+[10/05/2024 06:07:37][('192.168.137.1', 57952)] Verify Email stallonfernandes11@gmail.com
+
+[10/05/2024 06:08:55] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 06:08:57] ('192.168.137.1', 57962) connected.
+[10/05/2024 06:08:57][('192.168.137.1', 57962)] Retrieve Salt stallonfernandes11@gmail.com
+[10/05/2024 06:08:57][SERVER] ABCDEF
+[10/05/2024 06:08:57][('192.168.137.1', 57962)] Verify Email stallonfernandes11@gmail.com
+
+[10/05/2024 06:10:09] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 06:10:12] ('192.168.137.1', 57966) connected.
+[10/05/2024 06:10:12][('192.168.137.1', 57966)] Retrieve Salt stallonfernandes11@gmail.com
+[10/05/2024 06:10:12][SERVER] ABCDEF
+[10/05/2024 06:10:12][('192.168.137.1', 57966)] Verify Email stallonfernandes11@gmail.com
+
+[10/05/2024 06:12:34] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 06:12:38] ('192.168.137.1', 57977) connected.
+[10/05/2024 06:12:38][('192.168.137.1', 57977)] Retrieve Salt stallonfernandes11@gmail.com
+[10/05/2024 06:12:38][SERVER] ABCDEF
+[10/05/2024 06:12:38][('192.168.137.1', 57977)] Verify Email stallonfernandes11@gmail.com
+[10/05/2024 06:12:38][SERVER] True
+[10/05/2024 06:12:38][('192.168.137.1', 57977)] Verify Password stallonfernandes11@gmail.com  Password
+[10/05/2024 06:12:38][SERVER] True
+[10/05/2024 06:12:38][('192.168.137.1', 57977)] Verify Email stallonfernandes11@gmail.com
+[10/05/2024 06:12:38][SERVER] True
+
+[NEW CONNECTION 10/05/2024 06:19:20] ('192.168.137.1', 58009) connected.
+[10/05/2024 06:19:20][('192.168.137.1', 58009)] Retrieve Salt stallonfernandes11@gmail.com
+[10/05/2024 06:19:20][SERVER] ABCDEF
+[10/05/2024 06:19:20][('192.168.137.1', 58009)] Verify Email stallonfernandes11@gmail.com
+[10/05/2024 06:19:20][SERVER] True
+[10/05/2024 06:19:20][('192.168.137.1', 58009)] Verify Password stallonfernandes11@gmail.com  Password
+[10/05/2024 06:19:20][SERVER] True
+[10/05/2024 06:19:20][('192.168.137.1', 58009)] Create RegProperty H10 350000 77CoplandRoad HA04YF 1 1 1 leasehold C FLAT B
+[10/05/2024 06:19:20][SERVER] 
+[10/05/2024 06:19:20][('192.168.137.1', 58009)] Create RegProperty H1 450000 3PottersRoad UB24AS 2 2 1 freehold C TERRACED B
+[10/05/2024 06:19:20][SERVER] 
+[10/05/2024 06:19:20][('192.168.137.1', 58009)] Create RegProperty H2 5000000 123dhs SN1020 1 1 1 leasehold C FLAT B
+[10/05/2024 06:19:20][SERVER] 
+[10/05/2024 06:19:20][('192.168.137.1', 58009)] Send PropertyJSON U10 400000 100000 HA 1 1 1 leasehold FLAT
+[10/05/2024 06:19:20][SERVER] True

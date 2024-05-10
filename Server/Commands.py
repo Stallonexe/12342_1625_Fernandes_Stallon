@@ -80,21 +80,27 @@ class Command:
 
             if command[1] == "Email":
                 verify = self.User.VerifyEmail(command[2])
-                return verify
+                if verify:
+                    return "True"
+                else:
+                    return "False"
 
             if command[1] == "Password":
                 verify = self.User.VerifyPassword(command[2], command[3])
-                return verify
+                if verify:
+                    return "True"
+                else:
+                    return "False"
 
         elif command[0] == "Send":
 
             if command[1] == "PropertyJSON":
                 saved = self.house.GetProperty(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10])
 
-                if saved == True:
-                    return True
+                if saved:
+                    return "True"
                 else:
-                    return False
+                    return "False"
 
 
 #decoder = Command()

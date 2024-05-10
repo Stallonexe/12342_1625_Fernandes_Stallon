@@ -19,13 +19,22 @@ def Send(msg):
     send_length += b' ' * (HEADER - len(send_length))
     client.send(send_length)
     client.send(message)
-    print(client.recv(2048).decode(FORMAT))
 
-Send("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
-Send("Retrieve Salt stallonfernandes11@gmail.com")
+    reply = client.recv(2048).decode(FORMAT)
+
+    print(reply)
+
+#Send("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
+Send("Retrieve Salt stallonfernandes11@gmail.com") #reply
 Send("Verify Email stallonfernandes11@gmail.com")
 Send("Verify Password stallonfernandes11@gmail.com  Password")
-Send("Verify Email stallonfernandes11@gmail.com")
+
+Send("Create RegProperty H10 350000 77CoplandRoad HA04YF 1 1 1 leasehold C FLAT B")
+Send("Create RegProperty H1 450000 3PottersRoad UB24AS 2 2 1 freehold C TERRACED B")
+Send("Create RegProperty H2 5000000 123dhs SN1020 1 1 1 leasehold C FLAT B")
+Send("Send PropertyJSON U10 400000 100000 HA 1 1 1 leasehold FLAT")
+#Send("Verify Email stallonfernandes11@gmail.com")
+#Send()
 
 
 
