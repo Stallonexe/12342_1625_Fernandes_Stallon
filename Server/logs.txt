@@ -174,3 +174,20 @@
 
 [NEW CONNECTION 10/05/2024 05:35:40] ('192.168.137.1', 57526) connected.
 [10/05/2024 05:35:40][('192.168.137.1', 57526)] Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797
+
+[10/05/2024 05:53:07] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 05:53:17] ('192.168.137.1', 57898) connected.
+[10/05/2024 05:53:17][('192.168.137.1', 57898)] Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797
+
+[NEW CONNECTION 10/05/2024 05:55:58] ('192.168.137.1', 57906) connected.
+[10/05/2024 05:55:58][('192.168.137.1', 57906)] Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797
+[10/05/2024 05:55:58][SERVER] 
+
+[10/05/2024 05:58:07] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 10/05/2024 05:58:24] ('192.168.137.1', 57910) connected.
+[10/05/2024 05:58:24][('192.168.137.1', 57910)] Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797
+[10/05/2024 05:58:24][SERVER] 

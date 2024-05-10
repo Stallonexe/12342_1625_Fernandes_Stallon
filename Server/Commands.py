@@ -97,12 +97,12 @@ class Command:
                     return False
 
 
-decoder = Command()
-decoder.execute("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
-print(decoder.execute("Retrieve Salt stallonfernandes11@gmail.com"))
-print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
-print(decoder.execute("Verify Password stallonfernandes11@gmail.com  Password"))
-print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+#decoder = Command()
+#decoder.execute("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
+#print(decoder.execute("Retrieve Salt stallonfernandes11@gmail.com"))
+#print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+#print(decoder.execute("Verify Password stallonfernandes11@gmail.com  Password"))
+#print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
 
 #decoder.execute("Create RegProperty H10 350000 77CoplandRoad HA04YF 1 1 1 leasehold C FLAT B")
 #print(decoder.execute("Send PropertyJSON U2 400000 100000 HA 1 1 1 leasehold FLAT"))
