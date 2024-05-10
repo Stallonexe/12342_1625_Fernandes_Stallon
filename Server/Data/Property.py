@@ -10,7 +10,7 @@ def writeJson(Dictionary, filename):
 class PropertySQL:
     def __init__(self):
         # Database
-        self.connection = sqlite3.connect('Database/Property.db')
+        self.connection = sqlite3.connect('Data/Database/Property.db')
         self.cursor = self.connection.cursor()
 
         #Methods

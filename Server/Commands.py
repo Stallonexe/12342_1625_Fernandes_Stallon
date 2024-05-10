@@ -1,8 +1,8 @@
 import sqlite3
 
-from Data.Property import *
 from Data.Users import *
-
+from Data.Property import *
+#from Modules.functions import writeJson
 
 #from Email_System.Email_Sender import *
 #from Server.Server_Login_System import *
@@ -15,7 +15,8 @@ class Command:
         self.BookingFILEPATH = "Server\Files\Booking.db"  # No such file yet
 
         self.User = User()
-        self.Property = PropertySQL()
+        self.house = PropertySQL()
+       # self.house = House()
 
     def ConnectLoginDatabase(self):
         self.connection = sqlite3.connect(self.LoginFILEPATH)
@@ -42,7 +43,7 @@ class Command:
 
             elif command[1] == "RegProperty":
                 #self.ConnectPropertyDatabase()
-                self.Property.AddProperty(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10], command[11], command[12])
+                self.house.AddProperty(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10], command[11], command[12])
                 return ""
 
             elif command[1] == "Booking":
@@ -88,7 +89,7 @@ class Command:
         elif command[0] == "Send":
 
             if command[1] == "PropertyJSON":
-                saved = self.Property.GetProperty(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10])
+                saved = self.house.GetProperty(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10])
 
                 if saved == True:
                     return True
@@ -98,6 +99,21 @@ class Command:
 
 decoder = Command()
 decoder.execute("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
+print(decoder.execute("Retrieve Salt stallonfernandes11@gmail.com"))
+print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+print(decoder.execute("Verify Password stallonfernandes11@gmail.com  Password"))
+print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+
+#decoder.execute("Create RegProperty H10 350000 77CoplandRoad HA04YF 1 1 1 leasehold C FLAT B")
+#print(decoder.execute("Send PropertyJSON U2 400000 100000 HA 1 1 1 leasehold FLAT"))
+#print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+#print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+
+
+
+
+
+
 
 # execute("Create RegUser dorisanta@il. ABCDEF Password FirstName Surname 07440423797", "", "")
 # execute("Create RegProperty ASDFGH 450000 77CoplandRoad HA04YF 1 1 1 Freehold C Flat C","","")

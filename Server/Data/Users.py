@@ -4,12 +4,11 @@ class User:
     def __init__(self):
 
         #Database
-        self.connection = sqlite3.connect('login.db')
+        self.connection = sqlite3.connect('Data/Database/login.db')
         self.cursor = self.connection.cursor()
 
         #Methods
-        #self.CreateUserTable()
-        self.RegisterUser()
+        self.CreateUserTable()
 
     def CreateUserTable(self):
 
@@ -35,7 +34,7 @@ class User:
         self.cursor.execute(query, (Email,))
         User_salt = self.cursor.fetchone()
 
-        if len(User_salt) != 0:
+        if User_salt is not None and len(User_salt) != 0:
             return User_salt[0]
         else:
             return None
@@ -45,7 +44,7 @@ class User:
         self.cursor.execute(query, (Email,))
         Name = self.cursor.fetchone()
 
-        if len(Name) != 0:
+        if Name is not None and len(Name) != 0:
             return Name[0]
         else:
             return None
@@ -57,7 +56,7 @@ class User:
         User_Email = self.cursor.fetchone()  # Store the email address fetched from database
 
         # compare the Email address, if match: return True
-        if (User_Email[0]) == UserEmail:
+        if User_Email is not None and (User_Email[0]) == UserEmail:
             return True
         else:
             return False
@@ -68,7 +67,7 @@ class User:
         User_Hash = self.cursor.fetchone()  # Store the PasswordHash fetched from database
 
         # compare the Password Hash, if match: return True
-        if (User_Hash[0]) == Password:
+        if User_Hash is not None and (User_Hash[0]) == Password:
             return True
         else:
             return False
