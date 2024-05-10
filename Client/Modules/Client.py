@@ -1,4 +1,6 @@
+import json
 import socket
+#from Client.Mo
 
 HEADER = 64
 PORT = 5050
@@ -21,6 +23,10 @@ def Send(msg):
     client.send(message)
 
     reply = client.recv(2048).decode(FORMAT)
+    if reply == "PropertyJson":
+        PropertyDict = client.recv(1080).decode(FORMAT)
+        PropertyDict = json.loads(PropertyDict)
+
 
     print(reply)
 

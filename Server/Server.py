@@ -3,6 +3,8 @@ import threading
 from Commands import *
 import sqlite3
 from datetime import datetime
+import json
+import time
 
 # Constants
 HEADER = 64
@@ -32,8 +34,8 @@ def ServerClient(conn, addr):
     log(display_text)
 
     # Create a new connection and cursor for this thread
-    connection = sqlite3.connect('Data/Database/login.db')
-    cursor = connection.cursor()
+    #connection = sqlite3.connect('Data/Database/login.db')
+    #cursor = connection.cursor()
 
     connected = True
 
@@ -58,6 +60,11 @@ def ServerClient(conn, addr):
                 reply = decoder.execute(message=msg)
 
                 print(reply)
+                if type(reply) == dict:
+                    PropertyJson = json.dumps(reply, ensure_ascii=False)
+                    conn.send("PropertyJson".encode(FORMAT))
+                    conn.send(PropertyJson.encode(FORMAT))
+
                 if reply is not None and len(reply) != 0:
                     conn.send(reply.encode(FORMAT))
                     log(f"[{CurrentTime()}][SERVER] {reply}")

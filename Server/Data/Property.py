@@ -143,9 +143,11 @@ class PropertySQL:
             self.Property[PropertyID]["property_type"] = property_type[0]
             self.Property[PropertyID]["EPC_rating"] = EPC_rating[0]
 
-        filepath = f"JsonFiles/{UserID}.json"
+        #filepath = f"JsonFiles/{UserID}.json"
         #g = 'Server/Data/JsonFiles'
-        writeJson(self.Property, filepath)
+        #writeJson(self.Property, filepath)
+
+        return self.Property
 
         return True
 

@@ -95,10 +95,10 @@ class Command:
         elif command[0] == "Send":
 
             if command[1] == "PropertyJSON":
-                saved = self.house.GetProperty(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10])
+                PropertyDict = self.house.GetProperty(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10])
 
-                if saved:
-                    return "True"
+                if len(PropertyDict) != 0:
+                    return PropertyDict
                 else:
                     return "False"
 
