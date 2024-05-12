@@ -81,9 +81,9 @@ class Agent(User):
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS AgencyTable
                               (
                               AgencyName VARCHAR(320) PRIMARY KEY NOT NULL,
-                              AgentID VARCHAR(6) NOT NULL,
+                              AgentEmail VARCHAR(320) NOT NULL,
                               PropertyID VARCHAR(6) NOT NULL,
-                              FOREIGN KEY (AgentID) REFERENCES UserTable (UserEmail),
+                              FOREIGN KEY (AgentEmail) REFERENCES UserTable (UserEmail),
                               FOREIGN KEY (PropertyID) REFERENCES PropertyTable (PropertyID)
                               )''')
 
@@ -91,9 +91,10 @@ class Agent(User):
 
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS AgentTable
                               (
-                              AgentID VARCHAR(6) PRIMARY KEY NOT NULL,
-                              AgencyName CHAR(6) NOT NULL,
-                              PropertyID CHAR(6) NOT NULL,
+                              AgentEmail VARCHAR(320) PRIMARY KEY NOT NULL,
+                              AgentName VARCHAR(26) NOT NULL,
+                              
+                              AgencyName VARCHAR(320) PRIMARY KEY NOT NULL,
                               FOREIGN KEY (AgentID) REFERENCES UserTable (UserEmail),
                               FOREIGN KEY (PropertyID) REFERENCES PropertyTable (PropertyID)
                               )''')

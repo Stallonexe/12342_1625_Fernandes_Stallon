@@ -59,8 +59,8 @@ class Screen:
 
             self.Name = Send(f"Retrieve Name {self.UserEmail}")  # change
 
-            print(f"Verify {VerifyEmail}")
-            print(f"Name{self.Name}")
+            #print(f"Verify {VerifyEmail}")
+            #print(f"Name{self.Name}")
             if VerifyEmail == "True": #change
                 ATTEMPTS = 0
 
@@ -275,7 +275,14 @@ class Screen:
         print("\n##########################################################################################\n")
         print("\nPlease update your preferences, to  search for more properties.\n")
 
-        self.PreferenceScreen()
+        logout = input("Do you want to log out ? [y/n]").lower()
+
+        if logout == "y":
+            Send(DISCONNECT_MESSAGE)
+            exit()
+        else:
+            self.PreferenceScreen()
+
 
     def DisplayProperty(self, PropertyID):
         Text = f"""Property ID {PropertyID}.
@@ -328,8 +335,8 @@ class Screen:
 
         self.RankList()
 
-    def DisplayBooking(self):
-        print("\n##########################################################################################\n")
+    #def DisplayBooking(self):
+    #    print("\n##########################################################################################\n")
 
     def RankList(self):
         self.SeenList = sorted(self.SeenList, key=lambda ID: self.SeenDict[ID], reverse=True)

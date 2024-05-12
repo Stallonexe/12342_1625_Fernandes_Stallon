@@ -20,6 +20,7 @@ class PropertySQL:
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS PropertyTable
                               (
                               PropertyID VARCHAR(6) PRIMARY KEY NOT NULL,
+                              AgencyName VARCHAR(320), NOT NULL,
                               address VARCHAR(320) NOT NULL,
                               postcode CHAR(6) NOT NULL,
                               price INTEGER NOT NULL,
