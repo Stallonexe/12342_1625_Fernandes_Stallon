@@ -14,6 +14,12 @@ client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 client.connect(ADDR)
 
+
+def writeJson(Dictionary, filename):
+    with open(filename,'w') as json_file:
+        json.dump(Dictionary, json_file)
+    json_file.close()
+
 def Send(msg):
     message = msg.encode(FORMAT)
     msg_length = len(message)
@@ -27,18 +33,23 @@ def Send(msg):
         PropertyDict = client.recv(1080).decode(FORMAT)
         PropertyDict = json.loads(PropertyDict)
 
+        writeJson(PropertyDict, 'Property.json')
+
+        return ""
+
+    return reply
 
     print(reply)
 
 #Send("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
-Send("Retrieve Salt stallonfernandes11@gmail.com") #reply
-Send("Verify Email stallonfernandes11@gmail.com")
-Send("Verify Password stallonfernandes11@gmail.com  Password")
+#Send("Retrieve Salt stallonfernandes11@gmail.com") #reply
+#Send("Verify Email stallonfernandes11@gmail.com")
+#Send("Verify Password stallonfernandes11@gmail.com  Password")
 
-Send("Create RegProperty H10 350000 77CoplandRoad HA04YF 1 1 1 leasehold C FLAT B")
-Send("Create RegProperty H1 450000 3PottersRoad UB24AS 2 2 1 freehold C TERRACED B")
-Send("Create RegProperty H2 5000000 123dhs SN1020 1 1 1 leasehold C FLAT B")
-Send("Send PropertyJSON U10 400000 100000 HA 1 1 1 leasehold FLAT")
+#Send("Create RegProperty H10 350000 77CoplandRoad HA04YF 1 1 1 leasehold C FLAT B")
+#Send("Create RegProperty H1 450000 3PottersRoad UB24AS 2 2 1 freehold C TERRACED B")
+#Send("Create RegProperty H2 5000000 123dhs SN1020 1 1 1 leasehold C FLAT B")
+#Send("Send PropertyJSON U10 400000 100000 HA 1 1 1 leasehold FLAT")
 #Send("Verify Email stallonfernandes11@gmail.com")
 #Send()
 

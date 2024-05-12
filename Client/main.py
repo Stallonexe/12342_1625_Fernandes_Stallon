@@ -1,8 +1,8 @@
 import time
-from Client.Functions import *
-from Client.Modules.Email_Sender import email
-#from Client.Modules.Client import *
-from Client.Modules.Booking import *
+from Functions import *
+from Modules.Email_Sender import email
+from Modules.Booking import *
+from Modules.Client import *
 
 
 
@@ -55,12 +55,13 @@ class Screen:
 
         if EnableOTP == True:
             self.UserEmail = input("Enter Email :     ")
-            self.Name = input("Enter Name  :     ")
-            self.UserID = "U1"
-            VerifyEmail = True # server
+            VerifyEmail = Send(f"Verify Email {self.UserEmail}") # change
 
+            self.Name = Send(f"Retrieve Name {self.UserEmail}")  # change
 
-            if VerifyEmail == True:
+            print(f"Verify {VerifyEmail}")
+            print(f"Name{self.Name}")
+            if VerifyEmail == "True": #change
                 ATTEMPTS = 0
 
                 try:
@@ -102,10 +103,10 @@ class Screen:
             print()
             self.UserEmail = input("Enter Email :     ")
 
-            Send(f"!Verify Email {self.UserEmail}")
-            VerifyEmail = True  # server
+            VerifyEmail = Send(f"Verify Email {self.UserEmail}")
 
-            if VerifyEmail == True:
+
+            if VerifyEmail == "True":
                 ATTEMPTS = 0
                 while ATTEMPTS != 3:
 
@@ -113,9 +114,12 @@ class Screen:
 
                     Password = input("Password    :     ")
 
-                    MatchedPassword = HashPassword(self.Salt, Password)
+                    self.Salt = Send(f"Retrieve Salt {self.UserEmail}") # change
+                    HashedPassword = HashPassword(self.Salt, Password) # change
 
-                    if MatchedPassword == True:
+                    MatchedPassword = Send(f"Verify Password {self.UserEmail} {HashedPassword}") #change
+
+                    if MatchedPassword == "True":
                         print("\nLogin Successful !")
                         self.PreferenceScreen()
                         break
@@ -166,11 +170,18 @@ class Screen:
 
         HashedPassword = HashPassword(self.Salt, Password)
 
-        server_command = f"!Register {self.UserEmail} {self.Salt} {HashedPassword} {UserName} {Surname} {ContactNo}"
-        #Send(server_command)
+        #Start Change
+        server_command = f"Create RegUser {self.UserEmail} {self.Salt} {HashedPassword} {UserName} {Surname} {ContactNo}"
+        reply = Send(server_command)
 
-        print("\nRegistration Successful !\nPlease Login\n")
-        self.LoginScreen(EnableOTP=True)
+        if reply == "Done":
+            print("\nRegistration Successful !\nPlease Login\n")
+            self.LoginScreen(EnableOTP=True)
+        else:
+            print("\nRegistration failed !! [Returning to Start Menu ... ]\n")
+            self.StartMenu()
+
+        #End change
 
 
 
@@ -180,11 +191,13 @@ class Screen:
         print("\n##########################################################################################\n")
         print("#                                    USER PREFERENCES                                    #")
         print("\n##########################################################################################\n")
-        location = str(input("Location       :     ")).lower()
+        location = str(input("Location       :     ")).upper() # change
         postcode = PostCode(location)
-        print(postcode)
+        #print(postcode)
         print("\n[Detached][Semidetached][Terraced][Apartment][Flat][Bungalow]")
-        propertytype = str(input("Property Type  :     ")).lower()
+        propertytype = str(input("Property Type  :     ")).upper() # change
+        print("\nTenure Options: Leasehold Or Freehold") #change
+        tenure = str(input("Tenure:     ")).upper() # change
 
         try:
             max_price = int(input("Max House Price:     "))
@@ -195,7 +208,7 @@ class Screen:
             LivingroomNo = int(input("Living rooms   :     "))
         except:
             max_price = self.INF
-            min_price = self.INF
+            min_price = 0 #change here
             BedroomNo = self.INF
             BathroomNo = self.INF
             LivingroomNo = self.INF
@@ -203,11 +216,16 @@ class Screen:
         print("\n##########################################################################################\n")
         # GetProperty from server # get graph
 
-        self.Property = ''
-        while len(self.Property) == 0:
+        #change
+        self.Property = Send(f"Send PropertyJSON {max_price} {min_price} {postcode} {BedroomNo} {BathroomNo} {LivingroomNo} {tenure} {propertytype}")
+
+        while len(self.Property) == 0 or self.Property == "False": # change
             self.Property = readJson('Property.json')
 
         self.PropertyList = GetPropertyList(self.Property)
+        print(self.Property)
+        print()
+        print(self.PropertyList)
 
         print("Based on your preferences, here are some properties that you may like.")
         self.SearchProperties()
@@ -217,6 +235,7 @@ class Screen:
     def SearchProperties(self):
         SAMPLE_SIZE = 3
         Sample = SimpleRandomSample(self.PropertyList, SAMPLE_SIZE)
+
 
         for i in range(0, 3):
             ID = Sample[i]
@@ -288,7 +307,7 @@ class Screen:
             RequestBooking = input("Do you want to book a viewing? [y/n]").lower()
 
             if RequestBooking == "y":
-                booking = Booking(PropertyID,self.UserID)
+                booking = Booking(PropertyID,self.UserEmail) #change here
                 bookingdata = booking.BookAppointments()
 
                 if len(bookingdata) != 0:

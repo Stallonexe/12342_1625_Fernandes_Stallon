@@ -110,7 +110,7 @@ class PropertySQL:
 
         return EPC_rating
 
-    def GetProperty(self,UserID, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type):
+    def GetProperty(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type):
 
         PropertyIDList = self.GetPreferredPropertyIDList(max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type)
 

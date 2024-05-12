@@ -269,3 +269,142 @@
 [10/05/2024 06:19:20][SERVER] 
 [10/05/2024 06:19:20][('192.168.137.1', 58009)] Send PropertyJSON U10 400000 100000 HA 1 1 1 leasehold FLAT
 [10/05/2024 06:19:20][SERVER] True
+
+[11/05/2024 05:41:21] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 11/05/2024 05:41:30] ('192.168.137.1', 61299) connected.
+[11/05/2024 05:41:30][('192.168.137.1', 61299)] Retrieve Salt stallonfernandes11@gmail.com
+[11/05/2024 05:41:30][SERVER] ABCDEF
+[11/05/2024 05:41:30][('192.168.137.1', 61299)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 05:41:30][SERVER] True
+[11/05/2024 05:41:30][('192.168.137.1', 61299)] Verify Password stallonfernandes11@gmail.com  Password
+[11/05/2024 05:41:30][SERVER] True
+[11/05/2024 05:41:30][('192.168.137.1', 61299)] Create RegProperty H10 350000 77CoplandRoad HA04YF 1 1 1 leasehold C FLAT B
+
+[NEW CONNECTION 11/05/2024 05:42:29] ('192.168.137.1', 61302) connected.
+[11/05/2024 05:43:37][('192.168.137.1', 61302)] Verify Email back
+[11/05/2024 05:43:37][SERVER] False
+[11/05/2024 05:43:37][('192.168.137.1', 61302)] Retrieve Name back
+[11/05/2024 05:43:37][SERVER] None
+
+[NEW CONNECTION 11/05/2024 05:44:39] ('192.168.137.1', 61307) connected.
+[11/05/2024 05:44:58][('192.168.137.1', 61307)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 05:44:58][SERVER] True
+[11/05/2024 05:44:58][('192.168.137.1', 61307)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 05:44:58][SERVER] FirstName
+
+[11/05/2024 05:46:27] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 11/05/2024 05:46:35] ('192.168.137.1', 61311) connected.
+
+[NEW CONNECTION 11/05/2024 05:46:41] ('192.168.137.1', 61312) connected.
+[11/05/2024 05:46:57][('192.168.137.1', 61312)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 05:46:57][SERVER] True
+[11/05/2024 05:46:57][('192.168.137.1', 61312)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 05:46:57][SERVER] FirstName
+
+[NEW CONNECTION 11/05/2024 05:47:45] ('192.168.137.1', 61324) connected.
+[11/05/2024 05:47:59][('192.168.137.1', 61324)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 05:47:59][SERVER] True
+[11/05/2024 05:47:59][('192.168.137.1', 61324)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 05:47:59][SERVER] FirstName
+
+[NEW CONNECTION 11/05/2024 05:51:37] ('192.168.137.1', 61363) connected.
+[11/05/2024 05:51:53][('192.168.137.1', 61363)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 05:51:53][SERVER] True
+[11/05/2024 05:51:53][('192.168.137.1', 61363)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 05:51:53][SERVER] FirstName
+
+[NEW CONNECTION 11/05/2024 05:52:32] ('192.168.137.1', 61367) connected.
+[11/05/2024 05:52:45][('192.168.137.1', 61367)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 05:52:45][SERVER] True
+[11/05/2024 05:52:45][('192.168.137.1', 61367)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 05:52:45][SERVER] FirstName
+[11/05/2024 05:53:33][('192.168.137.1', 61367)] Create RegUser stallonfernandes11@gmail.com e571 9705c16e918f3234eee66a45cfe5bface63a74ccf2f9d878e348f5b8deb66a8a Stallon Fernandes 7440423797
+
+[NEW CONNECTION 11/05/2024 05:56:22] ('192.168.137.1', 61379) connected.
+[11/05/2024 05:56:38][('192.168.137.1', 61379)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 05:56:38][SERVER] True
+[11/05/2024 05:56:38][('192.168.137.1', 61379)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 05:56:38][SERVER] FirstName
+
+[NEW CONNECTION 11/05/2024 05:58:34] ('192.168.137.1', 61397) connected.
+[11/05/2024 05:58:48][('192.168.137.1', 61397)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 05:58:48][SERVER] True
+[11/05/2024 05:58:48][('192.168.137.1', 61397)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 05:58:48][SERVER] FirstName
+[11/05/2024 06:00:30][('192.168.137.1', 61397)] Send PropertyJSON 4000000 0 1 1 1 LEASEHOLD DETACHED
+
+[11/05/2024 06:07:13] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 11/05/2024 06:07:18] ('192.168.137.1', 61446) connected.
+[11/05/2024 06:07:40][('192.168.137.1', 61446)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 06:07:40][SERVER] True
+[11/05/2024 06:07:40][('192.168.137.1', 61446)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 06:07:40][SERVER] FirstName
+[11/05/2024 06:08:41][('192.168.137.1', 61446)] Send PropertyJSON 500000 0 2 2 1 FREEHOLD TERRACED
+
+[NEW CONNECTION 11/05/2024 06:11:08] ('192.168.137.1', 61459) connected.
+[11/05/2024 06:11:22][('192.168.137.1', 61459)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 06:11:22][SERVER] True
+[11/05/2024 06:11:22][('192.168.137.1', 61459)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 06:11:22][SERVER] FirstName
+[11/05/2024 06:12:22][('192.168.137.1', 61459)] Send PropertyJSON 5000000 0 UB 2 2 1 FREEHOLD TERRACED
+
+[11/05/2024 06:12:55] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 11/05/2024 06:13:01] ('192.168.137.1', 61464) connected.
+[11/05/2024 06:13:14][('192.168.137.1', 61464)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 06:13:14][SERVER] True
+[11/05/2024 06:13:14][('192.168.137.1', 61464)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 06:13:14][SERVER] FirstName
+[11/05/2024 06:14:04][('192.168.137.1', 61464)] Send PropertyJSON 500000 2 UB 2 0 1 FREEHOLD TERRACED
+[11/05/2024 06:14:04][SERVER] False
+
+[NEW CONNECTION 11/05/2024 06:17:30] ('192.168.137.1', 61516) connected.
+[11/05/2024 06:17:41][('192.168.137.1', 61516)] Verify Email stallonfernandes11@gmail.com
+[11/05/2024 06:17:41][SERVER] True
+[11/05/2024 06:17:41][('192.168.137.1', 61516)] Retrieve Name stallonfernandes11@gmail.com
+[11/05/2024 06:17:41][SERVER] FirstName
+[11/05/2024 06:18:33][('192.168.137.1', 61516)] Send PropertyJSON 50000000 0 UB 2 2 1 FREEHOLD TERRACED
+[11/05/2024 06:18:33][SERVER] False
+
+[12/05/2024 06:42:59] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 12/05/2024 06:43:19] ('192.168.137.1', 58222) connected.
+
+[12/05/2024 06:44:15] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 12/05/2024 06:44:21] ('192.168.137.1', 58230) connected.
+[12/05/2024 06:44:33][('192.168.137.1', 58230)] Verify Email back
+[12/05/2024 06:44:33][SERVER] False
+[12/05/2024 06:44:33][('192.168.137.1', 58230)] Retrieve Name back
+[12/05/2024 06:44:33][SERVER] None
+[12/05/2024 06:45:24][('192.168.137.1', 58230)] Create RegUser stallonfernandes11@gmail.com 427c 55bbbd09f649b67639cef435f498f88e1a37f310a3b939680c182d81549c1516 Stallon Fernandes 7440423797
+[12/05/2024 06:45:24][SERVER] 
+[12/05/2024 06:45:36][('192.168.137.1', 58230)] Verify Email stallonfernandes11@gmail.com
+[12/05/2024 06:45:36][SERVER] True
+[12/05/2024 06:45:36][('192.168.137.1', 58230)] Retrieve Name stallonfernandes11@gmail.com
+[12/05/2024 06:45:36][SERVER] Stallon
+[12/05/2024 06:46:48][('192.168.137.1', 58230)] Send PropertyJSON 1000000 0 HA 1000000 1000000 1000000 LEASEHOLD FLAT
+[12/05/2024 06:46:48][SERVER] False
+
+[NEW CONNECTION 12/05/2024 06:48:37] ('192.168.137.1', 58238) connected.
+[12/05/2024 06:49:05][('192.168.137.1', 58238)] Verify Email stallonfernandes``@gmail.com
+[12/05/2024 06:49:05][SERVER] False
+[12/05/2024 06:49:05][('192.168.137.1', 58238)] Retrieve Name stallonfernandes``@gmail.com
+[12/05/2024 06:49:05][SERVER] None
+[12/05/2024 06:49:21][('192.168.137.1', 58238)] Verify Email stallonfernandes11@gmail.com
+[12/05/2024 06:49:21][SERVER] True
+[12/05/2024 06:49:21][('192.168.137.1', 58238)] Retrieve Name stallonfernandes11@gmail.com
+[12/05/2024 06:49:21][SERVER] Stallon
+[12/05/2024 06:50:08][('192.168.137.1', 58238)] Send PropertyJSON 500000000000 0 HA 1 1 1 LEASEHOLD FLAT
+[12/05/2024 06:50:08][SERVER] False
+[12/05/2024 06:52:22][('192.168.137.1', 58238)] Send PropertyJSON 50000000 0 SN 2 2 2 FREEHOLD BUNGALOW
+[12/05/2024 06:52:22][SERVER] False

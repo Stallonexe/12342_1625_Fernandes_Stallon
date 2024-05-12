@@ -95,7 +95,19 @@ class Command:
         elif command[0] == "Send":
 
             if command[1] == "PropertyJSON":
-                PropertyDict = self.house.GetProperty(command[2], command[3], command[4], command[5], command[6], command[7], command[8], command[9], command[10])
+
+                max_price = int(command[2])
+                min_price = int(command[3])
+                postcode = str(command[4])
+                bedroom = int(command[5])
+                bathroom = int(command[6])
+                living_room = int(command[7])
+                tenure = str(command[8])
+                property_type = str(command[9])
+
+
+
+                PropertyDict = self.house.GetProperty(max_price, min_price, postcode, bedroom, bathroom, living_room, tenure, property_type)
 
                 if len(PropertyDict) != 0:
                     return PropertyDict
@@ -103,7 +115,7 @@ class Command:
                     return "False"
 
 
-#decoder = Command()
+decoder = Command()
 #decoder.execute("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
 #print(decoder.execute("Retrieve Salt stallonfernandes11@gmail.com"))
 #print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
