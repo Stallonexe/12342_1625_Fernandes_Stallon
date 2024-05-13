@@ -115,7 +115,7 @@ class Command:
                     return "False"
 
 
-decoder = Command()
+#decoder = Command()
 #decoder.execute("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
 #print(decoder.execute("Retrieve Salt stallonfernandes11@gmail.com"))
 #print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))

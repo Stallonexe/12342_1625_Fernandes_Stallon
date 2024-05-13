@@ -20,7 +20,7 @@ class PropertySQL:
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS PropertyTable
                               (
                               PropertyID VARCHAR(6) PRIMARY KEY NOT NULL,
-                              AgencyName VARCHAR(320), NOT NULL,
+                              AgencyName VARCHAR(320) NOT NULL,
                               address VARCHAR(320) NOT NULL,
                               postcode CHAR(6) NOT NULL,
                               price INTEGER NOT NULL,
@@ -187,3 +187,5 @@ class PropertySQL:
 #House.AddProperty('H3', 425000, '17 Potters Road', 'UB24AS', 2, 2, 1, 'FREEHOLD', 'C', 'TERRACED', 'A')
 
 #House.GetProperty('U1', 500000, 0, 'UB', 2, 2, 1, 'FREEHOLD', 'TERRACED')
+
+

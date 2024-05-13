@@ -408,3 +408,18 @@
 [12/05/2024 06:50:08][SERVER] False
 [12/05/2024 06:52:22][('192.168.137.1', 58238)] Send PropertyJSON 50000000 0 SN 2 2 2 FREEHOLD BUNGALOW
 [12/05/2024 06:52:22][SERVER] False
+
+[13/05/2024 05:52:53] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 13/05/2024 05:53:02] ('192.168.137.1', 54380) connected.
+[13/05/2024 05:53:24][('192.168.137.1', 54380)] Verify Email ferns311@gmail.com
+
+[13/05/2024 05:55:16] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 13/05/2024 05:55:25] ('192.168.137.1', 54421) connected.
+[13/05/2024 05:55:42][('192.168.137.1', 54421)] Verify Email ferns311@stgregorys.school
+[13/05/2024 05:55:42][SERVER] False
+[13/05/2024 05:55:42][('192.168.137.1', 54421)] Retrieve Name ferns311@stgregorys.school
+[13/05/2024 05:55:42][SERVER] None
