@@ -336,9 +336,6 @@ class Screen:
 
         self.RankList()
 
-    #def DisplayBooking(self):
-    #    print("\n##########################################################################################\n")
-
     def RankList(self):
         self.SeenList = sorted(self.SeenList, key=lambda ID: self.SeenDict[ID], reverse=True)
 
