@@ -1,14 +1,12 @@
 import sqlite3
 
-
 class User:
     def __init__(self):
 
-        # Database
-        self.connection = sqlite3.connect('Data/Database/Login.db')
+        #Database
+        self.connection = sqlite3.connect('Data/Database/Users.db')
         self.cursor = self.connection.cursor()
-
-        # Methods
+        
         self.CreateUserTable()
 
     def CreateUserTable(self):
@@ -30,6 +28,7 @@ class User:
 
         self.cursor.execute(query, values)
         self.connection.commit()
+            
 
     def GetSalt(self, Email):
         query = """SELECT UserSalt FROM UserTable WHERE UserEmail = ?"""
@@ -50,6 +49,7 @@ class User:
             return Name[0]
         else:
             return None
+
 
     def VerifyEmail(self, UserEmail):
         query = """SELECT UserEmail FROM UserTable WHERE UserEmail = ?"""
@@ -73,12 +73,12 @@ class User:
         else:
             return False
 
-
 class Agent(User):
     def __init__(self):
-        super(Agent, self).__init__()
+        super(Agent,self).__init__()
 
         self.CreateAgentTable()
+
 
     def CreateAgentTable(self):
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS AgentTable
@@ -87,7 +87,7 @@ class Agent(User):
                               AgencyName VARCHAR(320) NOT NULL,
                               FOREIGN KEY (AgentEmail) REFERENCES UserTable (UserEmail)
                               )'''
-                            )
+                              )
 
     def RegisterAgent(self, AgentEmail, AgencyName):
         query = """INSERT INTO AgentTable (AgentEmail, AgencyName) VALUES (?, ?)"""
@@ -97,7 +97,7 @@ class Agent(User):
         self.connection.commit()
 
     def GetAgentEmail(self, AgencyName):
-        query = """SELECT AgentEmail FROM AgentTable WHERE AgencyName = ?"""
+        query = """SELECT AgentEmail FROM UserTable WHERE AgencyName = ?"""
         self.cursor.execute(query, (AgencyName,))
         Agency_Name = self.cursor.fetchone()
 
@@ -106,8 +106,5 @@ class Agent(User):
         else:
             return None
 
-# testing
-user = User()
 
-agent = Agent()
-agent.RegisterAgent("stallonfernandes11@gmail.com", "Foxton")
+

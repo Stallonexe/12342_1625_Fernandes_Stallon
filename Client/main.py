@@ -56,30 +56,19 @@ class Screen:
         if EnableOTP == True:
             self.UserEmail = input("Enter Email :     ")
             VerifyEmail = Send(f"Verify Email {self.UserEmail}") # change
-
             self.Name = Send(f"Retrieve Name {self.UserEmail}")  # change
 
-            #print(f"Verify {VerifyEmail}")
-            #print(f"Name{self.Name}")
             if VerifyEmail == "True": #change
                 ATTEMPTS = 0
-
                 try:
                     SentOTP = email.SendOTP(self.UserEmail, self.Name)
-                    #print(SentOTP)
                 except:
                     print("Invalid details inputted ! \nPlease Try Again !")
                     self.LoginScreen(EnableOTP=True)
                 while ATTEMPTS != 3:
-
                     ATTEMPTS += 1
-                    #send otp
-
-
-                    print(f"\nAn OTP-Code has been sent to {self.UserEmail}\n Type 0 to try again\n")
-                    print()
+                    print(f"\nAn OTP-Code has been sent to {self.UserEmail}\n Type 0 to try again\n\n")
                     InputOTP = int(input("OTP         :     "))
-
 
                     if InputOTP == 0:
                         self.LoginScreen(EnableOTP=True)
@@ -88,8 +77,6 @@ class Screen:
                         print("\nLogin Successful !")
                         self.PreferenceScreen()
                         break
-
-
                     else:
                         print(f"\nInvalid OTP!\nYou have {ATTEMPTS - 3} attempts Left!")
                         print("\n##########################################################################################\n")
@@ -175,10 +162,11 @@ class Screen:
         agent = input("Are you a real estate agent?  [y/n]").lower()
 
         if agent == "y":
-            agency = input("What agency do you work for ?")
+            agency = input("What agency do you work for ?").upper()
         else:
             agency = "null"
-
+        
+        
         server_command = f"Create RegUser {self.UserEmail} {self.Salt} {HashedPassword} {UserName} {Surname} {ContactNo} {agency}"
         reply = Send(server_command)
 
@@ -306,8 +294,6 @@ class Screen:
                 - Tax Band: {self.Property[PropertyID]["tax_band"]}
                 - Property Type: {self.Property[PropertyID]["property_type"]}
                 - EPC Rating: {self.Property[PropertyID]["EPC_rating"]}
-                
-                - Ad by {self.Property[PropertyID]["Agency"]}
                 """
 
         Start_time = time.time()
@@ -327,24 +313,18 @@ class Screen:
                 booking = Booking(PropertyID,self.UserEmail) #change here
                 bookingdata = booking.BookAppointments()
 
-                if len(bookingdata) != 0 and bookingdata is not None:
+                if len(bookingdata) != 0 and bookingdata is not None :
+
                     Day = str(bookingdata[0])
                     AppointmentTime = bookingdata[1]
                     Address = self.Property[PropertyID]["address"]
                     postcode = self.Property[PropertyID]["PostCode"]
-                    Agency = self.Property[PropertyID]["Agency"]
+
+                    
                     DateTimeofAppointment = GetDateTime(Day, AppointmentTime)
+                    Send(f"Create Booking {DateTimeofAppointment} {self.UserEmail} ferns311@stgregorys.school {PropertyID}") # commands[i] fix this
 
-                    AgentEmail = Send(f"Retrieve AgentEmail {Agency}") # can fix this by random
-                    AgentName = Send(f"Retrieve Name {AgentEmail}")  # change
-
-
-
-                    reply = Send(f"Create Booking {DateTimeofAppointment} {self.UserEmail} {AgentEmail} {PropertyID}")  # commands[i] fix this
-                    if reply == "unavailable":
-                        print(f"\nThe appointment you selected is unavailable, please contact {Agency}! \n")
-                    else:
-                        email.SendBookingConfirmation(self.UserEmail, self.Name, Agency, AgentName, DateTimeofAppointment, Address, postcode)
+                    email.SendBookingConfirmation(self.UserEmail, self.Name, 'St Gregorys Estate', 'Stallon', DateTimeofAppointment, Address, postcode)
 
 
         TimeDuration = End_time - Start_time
@@ -355,6 +335,9 @@ class Screen:
         self.SeenDict[str(PropertyID)] = int(TimeDuration)
 
         self.RankList()
+
+    #def DisplayBooking(self):
+    #    print("\n##########################################################################################\n")
 
     def RankList(self):
         self.SeenList = sorted(self.SeenList, key=lambda ID: self.SeenDict[ID], reverse=True)

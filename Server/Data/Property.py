@@ -1,6 +1,6 @@
 import sqlite3
 import json
-#from Server.Modules.functions import *
+
 
 def writeJson(Dictionary, filename):
     with open(filename,'w') as json_file:
@@ -31,11 +31,12 @@ class PropertySQL:
                               tax_band CHAR(1) NOT NULL,
                               property_type VARCHAR(64) NOT NULL,
                               EPC_rating CHAR(1),
-                              Agency ARCHAR(64) NOT NULL
+                              Agency VARCHAR(32) NOT NULL
                               )''')
 
     def AddProperty(self, PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating ):
-        query = """INSERT INTO PropertyTable (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+        query = """INSERT INTO PropertyTable (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
         values = (PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating,)
 
         self.cursor.execute(query, values)
@@ -115,9 +116,9 @@ class PropertySQL:
     def get_Agency(self, PropertyID):
         query = """SELECT Agency FROM PropertyTable WHERE PropertyID = ?"""
         self.cursor.execute(query, (str(PropertyID),))
-        EPC_rating = self.cursor.fetchone()
+        Agency = self.cursor.fetchone()
 
-        return EPC_rating
+        return Agency
 
     def GetProperty(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type):
 
@@ -142,6 +143,7 @@ class PropertySQL:
             Agency = self.get_Agency(PropertyID)
 
 
+
             self.Property[PropertyID]["address"] = address[0]
             self.Property[PropertyID]["PostCode"] = postcode[0]
             self.Property[PropertyID]["Price"] = price[0]
@@ -154,13 +156,9 @@ class PropertySQL:
             self.Property[PropertyID]["EPC_rating"] = EPC_rating[0]
             self.Property[PropertyID]["Agency"] = Agency[0]
 
-        #filepath = f"JsonFiles/{UserID}.json"
-        #g = 'Server/Data/JsonFiles'
-        #writeJson(self.Property, filepath)
 
         return self.Property
 
-        return True
 
     def GetPreferredPropertyIDList(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure, property_type):
         query = """SELECT PropertyID FROM PropertyTable 

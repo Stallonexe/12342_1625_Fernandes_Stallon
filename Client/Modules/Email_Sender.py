@@ -57,9 +57,9 @@ class Email:
 
         Your viewing request has been approved.
         
-        Address :   {Address} 
-        PostCode:   {PostCode}
-        DateTime:   {BookingDateTime}
+        Address  :   {Address} 
+        PostCode :   {PostCode}
+        DateTime :   {BookingDateTime}
         
         Your appointment will be with:
 

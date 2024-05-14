@@ -1,10 +1,9 @@
 import socket
 import threading
 from Commands import *
-import sqlite3
 from datetime import datetime
 import json
-import time
+
 
 # Constants
 HEADER = 64
@@ -33,10 +32,6 @@ def ServerClient(conn, addr):
     display_text = f"\n[NEW CONNECTION {CurrentTime()}] {addr} connected."
     log(display_text)
 
-    # Create a new connection and cursor for this thread
-    #connection = sqlite3.connect('Data/Database/login.db')
-    #cursor = connection.cursor()
-
     connected = True
 
     while connected:
@@ -55,7 +50,6 @@ def ServerClient(conn, addr):
                 log(display_text)
 
             else:
-                # Pass the cursor to the execute function
                 decoder = Command()
                 reply = decoder.execute(message=msg)
 
@@ -72,11 +66,7 @@ def ServerClient(conn, addr):
                     conn.send("Done".encode(FORMAT))
                     log(f"[{CurrentTime()}][SERVER] {reply}")
 
-
-
     conn.close()
-    # Close the connection after handling the client
-    connection.close()
 
 def start():
     server.listen()

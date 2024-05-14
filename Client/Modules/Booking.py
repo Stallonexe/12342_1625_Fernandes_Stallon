@@ -1,3 +1,5 @@
+#from Client impo # error [circular imports]
+
 class Booking:
     def __init__(self, PropertyID, UserID):
         self.PropertyID = PropertyID
@@ -46,7 +48,7 @@ class Booking:
 
                 self.BookingData.append(Day)
                 self.BookingData.append(self.Time)
-
+                
                 print("\nA booking confirmation email has been sent. Please check your inbox.\n")
                 return self.BookingData
 

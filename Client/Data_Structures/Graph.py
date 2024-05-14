@@ -21,14 +21,14 @@ class Graph:
         self.addweights()
     #change start
     def FilterDictionary(self):
-        print(self.Property)
-        print(self.Sample)
+        #print(self.Property)
+        #print(self.Sample)
         for SampleNode in self.Sample:
             if SampleNode != self.root:
                 del self.Property[SampleNode]
 
-                print(self.Property)
-                print(self.Sample)
+                #print(self.Property)
+                #print(self.Sample)
 
     def LoadGraph(self):
         for i in self.Property:

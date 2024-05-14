@@ -10,6 +10,7 @@ class Command:
         self.house = PropertySQL()
         self.booking = Booking()
 
+
     def execute(self, message):
         command = message.split()
         print(command)
@@ -17,42 +18,36 @@ class Command:
         if command[0] == "Create":
 
             if command[1] == "RegUser":
-                self.User.RegisterUser(command[2], command[3], command[4], command[5], command[6], command[7])
                 if command[8] != "null":
                     self.agent.RegisterAgent(command[2], command[8])
+                else:
+                    self.User.RegisterUser(command[2], command[3], command[4], command[5], command[6], command[7])
+                
 
                 return ""
 
 
             elif command[1] == "RegProperty":
-                self.house.AddProperty(command[2], command[3], command[4], command[5], command[6], command[7],
-                                       command[8], command[9], command[10], command[11], command[12])
+                self.house.AddProperty(command[2], command[3], command[4], command[5], command[6], command[7], 
+                command[8], command[9], command[10], command[11], command[12])
                 return ""
 
             elif command[1] == "Booking":
                 reply = self.booking.BookAppointment(command[2], command[3], command[4], command[5])
                 return reply
-
+                
             else:
                 return ""
 
         elif command[0] == "Retrieve":
             if command[1] == "Salt":
-
-                # self.ConnectLoginDatabase()
                 salt = self.User.GetSalt(command[2])
                 return salt
 
             elif command[1] == "Name":
 
-                # self.ConnectLoginDatabase()
                 Name = self.User.GetName(command[2])
                 return Name
-
-            elif command[1] == "AgentEmail":
-                AgentEmail = self.agent.GetAgentEmail(command[2])
-                return AgentEmail[0]
-
 
 
         elif command[0] == "Delete":
@@ -92,25 +87,33 @@ class Command:
                 tenure = str(command[8])
                 property_type = str(command[9])
 
+
+
                 PropertyDict = self.house.GetProperty(max_price, min_price, postcode, bedroom, bathroom,
-                                                      living_room, tenure, property_type)
+                 living_room, tenure, property_type)
 
                 if len(PropertyDict) != 0:
                     return PropertyDict
                 else:
                     return "False"
 
-# decoder = Command()
-# decoder.execute("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
-# print(decoder.execute("Retrieve Salt stallonfernandes11@gmail.com"))
-# print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
-# print(decoder.execute("Verify Password stallonfernandes11@gmail.com  Password"))
-# print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
 
-# decoder.execute("Create RegProperty H10 350000 77CoplandRoad HA04YF 1 1 1 leasehold C FLAT B")
-# print(decoder.execute("Send PropertyJSON U2 400000 100000 HA 1 1 1 leasehold FLAT"))
-# print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
-# print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+#decoder = Command()
+#decoder.execute("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
+#print(decoder.execute("Retrieve Salt stallonfernandes11@gmail.com"))
+#print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+#print(decoder.execute("Verify Password stallonfernandes11@gmail.com  Password"))
+#print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+
+#decoder.execute("Create RegProperty H10 350000 77CoplandRoad HA04YF 1 1 1 leasehold C FLAT B")
+#print(decoder.execute("Send PropertyJSON U2 400000 100000 HA 1 1 1 leasehold FLAT"))
+#print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+#print(decoder.execute("Verify Email stallonfernandes11@gmail.com"))
+
+
+
+
+
 
 
 # execute("Create RegUser dorisanta@il. ABCDEF Password FirstName Surname 07440423797", "", "")

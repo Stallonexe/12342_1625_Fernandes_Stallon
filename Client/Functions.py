@@ -4,6 +4,9 @@ import random
 import hashlib
 from datetime import date, timedelta
 
+from Data_Structures.Graph import Graph
+from Data_Structures.Matirx import Matrix
+
 
 def writeJson(Dictionary, filename):
     with open(filename,'w') as json_file:
@@ -49,7 +52,7 @@ def GetPropertyList(Property):
     return PropertyList
 
 def PostCode(location):
-    FILEPATH = 'Files/PostCode.csv'
+    FILEPATH = 'Files\PostCode.csv'
     with open(FILEPATH,'r') as file:
         csv_reader = csv.reader(file)
 
@@ -128,7 +131,6 @@ def GetDateTime(Day, AppointmentTime):
 
     Date = todays_date + timedelta(days=Days_till_target_day)
 
-    Datetime = f'{Date} {AppointmentTime}:00:00'
+    Datetime = f"{Date} {AppointmentTime}:00:00"
 
     return Datetime
-
