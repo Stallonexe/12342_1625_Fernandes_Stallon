@@ -423,3 +423,15 @@
 [13/05/2024 05:55:42][SERVER] False
 [13/05/2024 05:55:42][('192.168.137.1', 54421)] Retrieve Name ferns311@stgregorys.school
 [13/05/2024 05:55:42][SERVER] None
+
+[14/05/2024 06:13:26] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 14/05/2024 06:13:33] ('192.168.137.1', 53219) connected.
+
+[NEW CONNECTION 14/05/2024 06:13:41] ('192.168.137.1', 53220) connected.
+[14/05/2024 06:13:58][('192.168.137.1', 53220)] Verify Email stall
+[14/05/2024 06:13:58][SERVER] False
+[14/05/2024 06:13:58][('192.168.137.1', 53220)] Retrieve Name stall
+[14/05/2024 06:13:58][SERVER] None
+[14/05/2024 06:15:31][('192.168.137.1', 53220)] Create RegUser stallonfernandes11@gmail.com bb10 807dfebcbac3efe5c07bf630f2e0d139c660393ed3948d3d0c98fdfbd59d21d4 Stallon Fernandes 7440423797 Foxton

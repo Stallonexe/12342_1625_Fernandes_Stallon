@@ -2,9 +2,7 @@ import json
 import csv
 import random
 import hashlib
-
-from Data_Structures.Graph import Graph
-from Data_Structures.Matirx import Matrix
+from datetime import date, timedelta
 
 
 def writeJson(Dictionary, filename):
@@ -104,6 +102,33 @@ def CompareRanking(Rank1, Rank2, Rank3):
     return FinalRank
 
 
+def GetDateTime(Day, AppointmentTime):
 
+    Day = Day[:2].upper()
 
+    if Day == "MO":
+        target_day = 0
+    elif Day == "TU":
+        target_day = 1
+    elif Day == "WE":
+        target_day = 2
+    elif Day == "TH":
+        target_day = 3
+    elif Day == "FR":
+        target_day = 4
+    elif Day == "SA":
+        target_day = 5
+    else:
+        target_day = 6
+
+    todays_date = date.today()
+    todays_day_of_week = todays_date.weekday()
+
+    Days_till_target_day = target_day - todays_day_of_week
+
+    Date = todays_date + timedelta(days=Days_till_target_day)
+
+    Datetime = f'{Date} {AppointmentTime}:00:00'
+
+    return Datetime
 

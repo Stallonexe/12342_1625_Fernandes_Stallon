@@ -30,7 +30,8 @@ class PropertySQL:
                               tenure VARCHAR(18) NOT NULL,
                               tax_band CHAR(1) NOT NULL,
                               property_type VARCHAR(64) NOT NULL,
-                              EPC_rating CHAR(1)
+                              EPC_rating CHAR(1),
+                              Agency ARCHAR(64) NOT NULL
                               )''')
 
     def AddProperty(self, PropertyID, price, address, postcode, bedroom, bathroom, living_room, tenure, tax_band, property_type, EPC_rating ):
@@ -111,6 +112,13 @@ class PropertySQL:
 
         return EPC_rating
 
+    def get_Agency(self, PropertyID):
+        query = """SELECT Agency FROM PropertyTable WHERE PropertyID = ?"""
+        self.cursor.execute(query, (str(PropertyID),))
+        EPC_rating = self.cursor.fetchone()
+
+        return EPC_rating
+
     def GetProperty(self, max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type):
 
         PropertyIDList = self.GetPreferredPropertyIDList(max_price, min_price, postcode, bedroom, bathroom, living_room, tenure,property_type)
@@ -131,6 +139,7 @@ class PropertySQL:
             tax_band = self.get_tax_band(PropertyID)
             property_type = self.get_property_type(PropertyID)
             EPC_rating = self.get_EPC_rating(PropertyID)
+            Agency = self.get_Agency(PropertyID)
 
 
             self.Property[PropertyID]["address"] = address[0]
@@ -143,6 +152,7 @@ class PropertySQL:
             self.Property[PropertyID]["tax_band"] = tax_band[0]
             self.Property[PropertyID]["property_type"] = property_type[0]
             self.Property[PropertyID]["EPC_rating"] = EPC_rating[0]
+            self.Property[PropertyID]["Agency"] = Agency[0]
 
         #filepath = f"JsonFiles/{UserID}.json"
         #g = 'Server/Data/JsonFiles'

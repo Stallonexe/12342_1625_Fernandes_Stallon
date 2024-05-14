@@ -1,13 +1,14 @@
 import sqlite3
 
+
 class User:
     def __init__(self):
 
-        #Database
-        self.connection = sqlite3.connect('Data/Database/login.db')
+        # Database
+        self.connection = sqlite3.connect('Data/Database/Login.db')
         self.cursor = self.connection.cursor()
 
-        #Methods
+        # Methods
         self.CreateUserTable()
 
     def CreateUserTable(self):
@@ -23,7 +24,8 @@ class User:
                               )''')
 
     def RegisterUser(self, UserEmail, UserSalt, Password, FirstName, Surname, ContactNo):
-        query = """INSERT INTO UserTable (UserEmail, UserSalt, PasswordHash, FirstName, Surname, ContactNo) VALUES (?, ?, ?, ?, ?, ?)"""
+        query = """INSERT INTO UserTable (UserEmail, UserSalt, PasswordHash, FirstName, Surname, ContactNo) 
+        VALUES (?, ?, ?, ?, ?, ?)"""
         values = (UserEmail, UserSalt, Password, FirstName, Surname, ContactNo,)
 
         self.cursor.execute(query, values)
@@ -49,7 +51,6 @@ class User:
         else:
             return None
 
-
     def VerifyEmail(self, UserEmail):
         query = """SELECT UserEmail FROM UserTable WHERE UserEmail = ?"""
         self.cursor.execute(query, (UserEmail,))
@@ -72,17 +73,41 @@ class User:
         else:
             return False
 
+
 class Agent(User):
     def __init__(self):
         super(Agent, self).__init__()
 
+        self.CreateAgentTable()
 
     def CreateAgentTable(self):
-
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS AgentTable
                               (
                               AgentEmail VARCHAR(320) PRIMARY KEY NOT NULL,
                               AgencyName VARCHAR(320) NOT NULL,
-                              FOREIGN KEY (AgentID) REFERENCES UserTable (UserEmail),
-                              FOREIGN KEY (PropertyID) REFERENCES PropertyTable (PropertyID)
-                              )''')
+                              FOREIGN KEY (AgentEmail) REFERENCES UserTable (UserEmail)
+                              )'''
+                            )
+
+    def RegisterAgent(self, AgentEmail, AgencyName):
+        query = """INSERT INTO AgentTable (AgentEmail, AgencyName) VALUES (?, ?)"""
+        values = (AgentEmail, AgencyName)
+
+        self.cursor.execute(query, values)
+        self.connection.commit()
+
+    def GetAgentEmail(self, AgencyName):
+        query = """SELECT AgentEmail FROM AgentTable WHERE AgencyName = ?"""
+        self.cursor.execute(query, (AgencyName,))
+        Agency_Name = self.cursor.fetchone()
+
+        if Agency_Name is not None and len(Agency_Name) != 0:
+            return Agency_Name[0]
+        else:
+            return None
+
+# testing
+user = User()
+
+agent = Agent()
+agent.RegisterAgent("stallonfernandes11@gmail.com", "Foxton")

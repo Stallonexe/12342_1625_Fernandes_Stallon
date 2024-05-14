@@ -49,7 +49,7 @@ class Email:
 
         return OTP
 
-    def SendBookingConfirmation(self, recipient_email, recipient_name, AgencyName, Agent, BookingDate, BookingTime, Address, PostCode):
+    def SendBookingConfirmation(self, recipient_email, recipient_name, AgencyName, Agent, BookingDateTime, Address, PostCode):
         Subject = 'Your viewing request has been approved.'
 
         Body = f"""
@@ -59,8 +59,7 @@ class Email:
         
         Address :   {Address} 
         PostCode:   {PostCode}
-        Day     :   {BookingDate.upper()}
-        Time    :    {BookingTime}: 00
+        DateTime:   {BookingDateTime}
         
         Your appointment will be with:
 
