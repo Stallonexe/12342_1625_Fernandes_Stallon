@@ -103,10 +103,10 @@ class Screen:
 
                     Password = input("Password    :     ")
 
-                    self.Salt = Send(f"Retrieve Salt {self.UserEmail}") # change
-                    HashedPassword = HashPassword(self.Salt, Password) # change
+                    self.Salt = Send(f"Retrieve Salt {self.UserEmail}")
+                    HashedPassword = HashPassword(self.Salt, Password)
 
-                    MatchedPassword = Send(f"Verify Password {self.UserEmail} {HashedPassword}") #change
+                    MatchedPassword = Send(f"Verify Password {self.UserEmail} {HashedPassword}")
 
                     if MatchedPassword == "True":
                         print("\nLogin Successful !")
@@ -189,13 +189,13 @@ class Screen:
         print("\n##########################################################################################\n")
         print("#                                    USER PREFERENCES                                    #")
         print("\n##########################################################################################\n")
-        location = str(input("Location       :     ")).upper() # change
+        location = str(input("Location       :     ")).upper()
         postcode = PostCode(location)
         #print(postcode)
         print("\n[Detached][Semidetached][Terraced][Apartment][Flat][Bungalow]")
-        propertytype = str(input("Property Type  :     ")).upper() # change
-        print("\nTenure Options: Leasehold Or Freehold") #change
-        tenure = str(input("Tenure:     ")).upper() # change
+        propertytype = str(input("Property Type  :     ")).upper()
+        print("\nTenure Options: Leasehold Or Freehold")
+        tenure = str(input("Tenure:     ")).upper()
 
         try:
             max_price = int(input("Max House Price:     "))
@@ -212,19 +212,17 @@ class Screen:
             LivingroomNo = self.INF
 
         print("\n##########################################################################################\n")
-        # GetProperty from server # get graph
 
-        #change
         self.Property = Send(f"Send PropertyJSON {max_price} {min_price} {postcode} {BedroomNo} {BathroomNo} {LivingroomNo} {tenure} {propertytype}")
 
-        while len(self.Property) == 0 or self.Property == "False": # change
+        while len(self.Property) == 0 or self.Property == "False":
             self.Property = readJson('Property.json')
 
         self.PropertyList = GetPropertyList(self.Property)
         print("\nBased on your preferences, here are some properties that you may like.")
         self.SearchProperties()
         print("\n##########################################################################################\n")
-        #Get Property###############
+
 
     def SearchProperties(self):
         SAMPLE_SIZE = 3
@@ -239,7 +237,7 @@ class Screen:
         Root2 = self.SeenList[1]
         Root3 = self.SeenList[2]
 
-        # Change Start
+
         graph1 = Graph(Root_node=Root1, Samplelist=Sample, PropertyDict=self.Property)
         graph2 = Graph(Root_node=Root2, Samplelist=Sample, PropertyDict=self.Property)
         graph3 = Graph(Root_node=Root3, Samplelist=Sample, PropertyDict=self.Property)
@@ -336,10 +334,6 @@ class Screen:
 
     def RankList(self):
         self.SeenList = sorted(self.SeenList, key=lambda ID: self.SeenDict[ID], reverse=True)
-
-
-
-
 
 
 
