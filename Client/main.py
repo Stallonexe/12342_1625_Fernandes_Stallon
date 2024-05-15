@@ -3,6 +3,8 @@ from Functions import *
 from Modules.Email_Sender import email
 from Modules.Booking import *
 from Modules.Client import *
+from Data_Structures.Graph import *
+from Data_Structures.Matirx import *
 
 
 
@@ -219,11 +221,7 @@ class Screen:
             self.Property = readJson('Property.json')
 
         self.PropertyList = GetPropertyList(self.Property)
-        #print(self.Property)
-        print()
-        #print(self.PropertyList)
-
-        print("Based on your preferences, here are some properties that you may like.")
+        print("\nBased on your preferences, here are some properties that you may like.")
         self.SearchProperties()
         print("\n##########################################################################################\n")
         #Get Property###############

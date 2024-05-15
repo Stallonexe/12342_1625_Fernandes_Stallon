@@ -4,9 +4,6 @@ import random
 import hashlib
 from datetime import date, timedelta
 
-from Data_Structures.Graph import Graph
-from Data_Structures.Matirx import Matrix
-
 
 def writeJson(Dictionary, filename):
     with open(filename,'w') as json_file:
