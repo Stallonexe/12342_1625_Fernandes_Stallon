@@ -9,7 +9,7 @@ class Graph:
         self.Matrix = {}
 
 
-        self.FilterDictionary() #Change
+        self.FilterDictionary()
         self.MainProcedure()
 
     def MainProcedure(self):
@@ -19,23 +19,23 @@ class Graph:
                 if Head != Tail:
                     self.findlink(Head, Tail)
         self.addweights()
-    #change start
+
     def FilterDictionary(self):
-        #print(self.Property)
-        #print(self.Sample)
+
+
         for SampleNode in self.Sample:
             if SampleNode != self.root:
                 del self.Property[SampleNode]
 
-                #print(self.Property)
-                #print(self.Sample)
+
+
 
     def LoadGraph(self):
         for i in self.Property:
             self.graph[i] = {}
             for j in self.Property:
                 self.graph[i][j] = 0
-    #End Change
+
 
 
     def findlink(self, HeadNode, TailNode):
@@ -74,7 +74,7 @@ class Graph:
             OutboundLinks = 0
             for links in self.graph[HeadNode].values():
                 OutboundLinks += links
-            #print(f"{HeadNode}: {OutboundLinks}")
+
 
             if OutboundLinks == 0:
                 Weight = 0

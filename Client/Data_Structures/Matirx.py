@@ -8,8 +8,8 @@ class Matrix:
         self.InitialRank()
         for i in range(3):
             self.MultiplyMatrix()
-            #print(f"{i} Rank", self.GetRank())
-        #print("Rank", self.Rank)
+
+
 
 
 
@@ -27,7 +27,7 @@ class Matrix:
         for i in range(len(self.Row)):
             rank = 1 / len(self.Row)
             self.Rank.append(rank)
-        #print("Initial Rank",self.Rank)
+
 
     def MultiplyMatrix(self):
         Rank = []
@@ -47,7 +47,7 @@ class Matrix:
             Rank.append(total)
 
         self.Rank = Rank
-        #print(self.Rank)
+
 
     def ConvertToDictionary(self):
         Dictionary = {}
