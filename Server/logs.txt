@@ -474,3 +474,48 @@
 [14/05/2024 19:35:16][SERVER] False
 [14/05/2024 19:35:37][('192.168.137.1', 55881)] Create Booking 2024-05-15 9:00:00 stallonfernandes11@gmail.com ferns311@stgregorys.school H20
 [14/05/2024 19:35:37][SERVER] None
+
+[14/05/2024 21:08:38] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 14/05/2024 21:08:50] ('192.168.137.1', 56669) connected.
+[14/05/2024 21:09:43][('192.168.137.1', 56669)] Create RegUser stallonfernandes11@gmail.com 633a 7a370c3c6c87d740f2a215d5cb11d107269412fa0df3440ca5600e23acc5d58e Stallon Fernandes 7440469792 null
+[14/05/2024 21:09:43][SERVER] 
+[14/05/2024 21:09:58][('192.168.137.1', 56669)] Verify Email stallonfernandes11@gmail.com
+[14/05/2024 21:09:58][SERVER] True
+[14/05/2024 21:09:58][('192.168.137.1', 56669)] Retrieve Name stallonfernandes11@gmail.com
+[14/05/2024 21:09:58][SERVER] Stallon
+[14/05/2024 21:10:54][('192.168.137.1', 56669)] Send PropertyJSON 1000000 0 HA 1000000 1000000 1000000 FREEHOLD DETACHED
+[14/05/2024 21:10:54][SERVER] False
+
+[14/05/2024 21:13:55] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 14/05/2024 21:14:04] ('192.168.137.1', 56686) connected.
+[14/05/2024 21:14:53][('192.168.137.1', 56686)] Create RegUser stallonfernandes11@gmail.com 738a f5098c886a29f3c6f3c83acd24b72a922aae6a9c76d90df281490fdc1e3bbad7 Stallon Fernandes 4839567524 null
+[14/05/2024 21:14:53][SERVER] 
+[14/05/2024 21:15:06][('192.168.137.1', 56686)] Verify Email stallonfernandes11@gmail.com
+[14/05/2024 21:15:06][SERVER] True
+[14/05/2024 21:15:06][('192.168.137.1', 56686)] Retrieve Name stallonfernandes11@gmail.com
+[14/05/2024 21:15:06][SERVER] Stallon
+[14/05/2024 21:15:57][('192.168.137.1', 56686)] Send PropertyJSON 500000 0 HA 3 2 1 FREEHOLD DETACHED
+[14/05/2024 21:15:57][SERVER] False
+[14/05/2024 21:16:14][('192.168.137.1', 56686)] Create Booking 2024-05-13 9:00:00 stallonfernandes11@gmail.com ferns311@stgregorys.school H11
+[14/05/2024 21:16:14][SERVER] None
+[14/05/2024 21:16:43][('192.168.137.1', 56686)] Create Booking 2024-05-19 9:00:00 stallonfernandes11@gmail.com ferns311@stgregorys.school H29
+[14/05/2024 21:16:43][SERVER] None
+
+[15/05/2024 06:51:35] Server is online
+[LISTENING] Server is listening on 192.168.137.1
+
+[NEW CONNECTION 15/05/2024 06:51:42] ('192.168.137.1', 59881) connected.
+[15/05/2024 06:51:57][('192.168.137.1', 59881)] Verify Email stallonfernandes11@gmail.com
+[15/05/2024 06:51:57][SERVER] True
+[15/05/2024 06:51:57][('192.168.137.1', 59881)] Retrieve Name stallonfernandes11@gmail.com
+[15/05/2024 06:51:57][SERVER] Stallon
+[15/05/2024 06:52:31][('192.168.137.1', 59881)] Send PropertyJSON 5000000 0 HA 3 2 1 FREEHOLD DETACHED
+[15/05/2024 06:52:31][SERVER] False
+[15/05/2024 06:52:41][('192.168.137.1', 59881)] Create Booking 2024-05-14 9:00:00 stallonfernandes11@gmail.com ferns311@stgregorys.school H23
+[15/05/2024 06:52:41][SERVER] None
+[15/05/2024 06:53:02][('192.168.137.1', 59881)] Create Booking 2024-05-15 9:00:00 stallonfernandes11@gmail.com ferns311@stgregorys.school H25
+[15/05/2024 06:53:02][SERVER] None
