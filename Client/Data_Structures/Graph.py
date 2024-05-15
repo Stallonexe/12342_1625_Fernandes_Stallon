@@ -21,8 +21,6 @@ class Graph:
         self.addweights()
 
     def FilterDictionary(self):
-
-
         for SampleNode in self.Sample:
             if SampleNode != self.root:
                 del self.Property[SampleNode]
@@ -74,7 +72,6 @@ class Graph:
             OutboundLinks = 0
             for links in self.graph[HeadNode].values():
                 OutboundLinks += links
-
 
             if OutboundLinks == 0:
                 Weight = 0
