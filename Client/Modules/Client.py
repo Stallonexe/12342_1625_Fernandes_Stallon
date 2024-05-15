@@ -1,6 +1,5 @@
 import json
 import socket
-#from Client.Mo
 
 HEADER = 64
 PORT = 5050
@@ -39,7 +38,6 @@ def Send(msg):
 
     return reply
 
-    print(reply)
 
 #Send("Create RegUser stallonfernandes11@gmail.com ABCDEF Password FirstName Surname 07440423797")
 #Send("Retrieve Salt stallonfernandes11@gmail.com") #reply
